@@ -34,7 +34,7 @@ CREATE TABLE `applicant` (
   `owner_id` int(11) unsigned NOT NULL ,
   `applicant_id` int(11) unsigned NOT NULL ,
   `advert_id` int(15) unsigned NOT NULL ,
-  `status` boolean DEFAULT NULL,
+  `status` boolean DEFAULT FALSE,
   PRIMARY KEY (id),
   FOREIGN KEY (owner_id) REFERENCES user(id),
   FOREIGN KEY (applicant_id) REFERENCES user(id),
@@ -51,5 +51,5 @@ INSERT INTO advert VALUES
 (1,1,'Cut Grass','1/2 Acre of grass to be cut! Need Help! Bring own mower!','$20','Athlone','2015-09-19 08:00:00','');
 LOCK TABLES applicant WRITE;
 INSERT INTO applicant VALUES 
-(1,1,2,1,NULL);
+(1,1,2,1,TRUE);
 UNLOCK TABLES;
