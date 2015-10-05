@@ -104,6 +104,43 @@ body {
 	display: inline-block;
 }
 
+.profile-content {
+	width: 70%;
+	height: 400px;
+	max-height: 400px; 
+	margin-left : 20%;
+	background: white;
+	border-radius: 30px;
+}
+
+.profile-photo {
+	width: 30%;
+	height: 370px;
+	margin: 15px;
+	display: inline-block;
+	float:left;
+}
+
+.profile-photo img {
+	width: 225px;
+	height: 370px;
+	border-radius: 20px;
+	box-shadow: 2px 2px 2px black;
+}
+
+.profile-bio {
+	width: 60%;
+	height: 370px;
+	margin: 15px;
+	display: inline-block;
+	text-align:center;
+}
+
+.well.well-lg {
+	width: 100%;
+	height: 100%;
+}
+
 .modal-content {
 	-webkit-border-radius: 50px;
 	-moz-border-radius: 50px;
@@ -121,7 +158,7 @@ body {
 	border-top-right-radius: 50px;
 }
 
-.modalError{
+.modalError {
 	text-align: center;
-	color:red;
+	color: red;
 }

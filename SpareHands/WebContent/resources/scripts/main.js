@@ -1,4 +1,8 @@
+var rootURL = "http://localhost:8080/SpareHands/rest";
+
 $(document).ready(function() {
+	$('#adverts-section').show();
+	$('#profile-section').hide();
 	var cookie = getCookie("UserLoggedIn=");
 
 	if(!cookie){
@@ -22,6 +26,7 @@ $(document).ready(function() {
 		$('#applicationsNav').addClass('inactive').removeClass('active');
 		$('#profileNav').addClass('active').removeClass('inactive');
 		$('#adverts-section').hide();
+		$('#profile-section').show();
 		generateProfile();
 	});
 
@@ -56,11 +61,43 @@ function advertsSelected() {
 	$('#applicationsNav').addClass('inactive').removeClass('active');
 	$('#profileNav').addClass('inactive').removeClass('active');
 	$('#adverts-section').show();
+	$('#profile-section').hide();
 }
+
+var HelloComponent = React.createClass({  
+    render: function() {
+    	return <div class="profile-photo">
+		<img src="\""{this.props.imageSource}""\"" alt="...">
+		</div>
+		<div class="profile-bio">
+		</div>
+        return <div>Hello {this.props.name}</div>;
+    }
+});
 
 function generateProfile(){
 	console.log(getCookie("UserLoggedIn="));
+	var userDetails = findUserById(getCookie("UserLoggedIn="));
+	console.log(userDetails);
+	React.render(
+		
+	);
 }
+
+var  findUserById= function(id) {
+	var userData;
+	$.ajax({
+		type: 'GET',
+		url: rootURL + '/user/allUsers/' + id,
+		dataType: "json",
+		async: false,
+		success: function (data) {
+			userData = data
+		}
+	});
+	return userData;
+};
+
 
 function getCookie(cookieName) {
 	var ca = document.cookie.split(';');
