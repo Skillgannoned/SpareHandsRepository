@@ -12,27 +12,42 @@
 <!-- Javascript -->
 <script src="resources/scripts/jquery-2.1.4.min.js"></script>
 <script src="resources/scripts/bootstrap.js"></script>
+<script src="resources/scripts/react/react.js"></script>
+<script src="resources/scripts/react/JSXTransformer.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script type="text/babel" src="resources/scripts/generate-adverts.js"></script>
 <script src="resources/scripts/main.js"></script>
+<script type="text/babel" src="resources/scripts/login.js"></script>
+<script type="text/babel" src="resources/scripts/register.js"></script>
+
 </head>
 <body>
 	<header>
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-content">
 				<div class="navbar-left">
-					<a href="#" class="active" id="advertsNav"> 
-						<span class="glyphicon glyphicon-th" aria-hidden="true">Adverts</span>
-					</a> <a href="#" class="inactive" id="applicationsNav"> 
-						<span class="glyphicon glyphicon-envelope" aria-hidden="true">Applications</span>
-					</a> <a href="#" class="inactive" id="profileNav"> 
-						<span class="glyphicon glyphicon-user" aria-hidden="true">Profile</span>
+					<a href="#" class="active" id="advertsNav"> <span
+						class="glyphicon glyphicon-th" aria-hidden="true">Adverts</span>
+					</a> <a href="#" class="inactive" id="applicationsNav"> <span
+						class="glyphicon glyphicon-envelope" aria-hidden="true">Applications</span>
+					</a> <a href="#" class="inactive" id="profileNav"> <span
+						class="glyphicon glyphicon-user" aria-hidden="true">Profile</span>
 					</a>
 				</div>
 				<div class="navbar-center">
 					<h3>SpareHands</h3>
 				</div>
 				<div class="navbar-right">
-					<a href="#" id="register-login">Register / Login</a> <a href="#"
-						id="logout">Logout</a>
+					<a href="#" id="login" data-toggle="modal" data-target="#loginModal">
+						<span aria-hidden="true">Login</span>
+					</a>
+					<a href="#" id="register" data-toggle="modal" data-target="#registerModal">
+						<span aria-hidden="true">Register</span>
+					</a> 
+					<a href="#" id="logout">
+						<span aria-hidden="true">Logout</span>
+					</a>
 				</div>
 			</div>
 		</nav>
@@ -42,8 +57,9 @@
 			<div class="panel panel-info">
 				<div class="col-lg-6">
 					<div class="input-group">
-						<input type="text" class="form-control" placeholder="Search for..."> 
-						<span class="input-group-btn">
+						<input type="text" class="form-control"
+							placeholder="Search for..."> <span
+							class="input-group-btn">
 							<button class="btn btn-default" type="button">Go!</button>
 						</span>
 					</div>
@@ -53,7 +69,7 @@
 			</div>
 		</div>
 		<div class="container">
-			<div class="row">
+			<div class="row" id="row1">
 				<div class="panel panel-primary">
 					<div class="panel-body">Basic panel example</div>
 				</div>
@@ -90,4 +106,79 @@
 	</section>
 	<footer></footer>
 </body>
+
+<!--login modal-->
+<div id="loginModal" class="modal fade" tabindex="-1" role="dialog"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h1 class="text-center">Login Details</h1>
+			</div>
+			<div class="modal-body">
+				<form class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Email" id="loginEmail">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control input-lg"
+							placeholder="Password" id="loginPassword">
+					</div>
+					<div class="modalError" id="loginModalError"></div>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary btn-lg btn-block"
+							id="loginButton">Login</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--register modal-->
+<div id="registerModal" class="modal fade" tabindex="-1" role="dialog"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h1 class="text-center">Register Details</h1>
+			</div>
+			<div class="modal-body">
+				<div id="modalError"></div>
+				<form class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="First Name" id="registerForeName">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Last Name" id="registerSurname">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="E-Mail Address" id="registerEmail">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control input-lg"
+							placeholder="Password" id="registerPassword">
+					</div>
+					<div class="form-group">
+						<input type="password" class="form-control input-lg"
+							placeholder="Confirm Password" id="registerPasswordConfirm">
+					</div>
+					<div class="modalError" id="registerModalError"></div>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary btn-lg btn-block"
+							id="registerButton">Register</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
 </html>

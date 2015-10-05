@@ -37,14 +37,14 @@ public class UserWS {
 	        return Response.status(200).entity(users).build();
 	    }	   
 	    
-//	    @GET
-//	    @Produces({ MediaType.APPLICATION_JSON })
-//	    @Path("/email/{email}")
-//	    public Response findUserByEmail(@PathParam("email") String email) {
-//	    	System.out.println("email "+email);
-//	    	User user = userDao.getUserByEmail(email);
-//	        return Response.status(200).entity(user).build();
-//	    }
+	    @GET
+	    @Produces({ MediaType.APPLICATION_JSON })
+	    @Path("/email/{email}")
+	    public Response findUserByEmail(@PathParam("email") String email) {
+	    	System.out.println("email "+email);
+	    	User user = userDao.getUserByEmail(email);
+	        return Response.status(200).entity(user).build();
+	    }
 	   
 		@GET
 		@Path("/allUsers/{id}")
@@ -58,6 +58,7 @@ public class UserWS {
 	    @Path("/addUser")
 	    @Produces({ MediaType.APPLICATION_JSON })
 	    public Response saveUser(final User user) {
+	    	System.out.println("USER\n\n"+user.toString()+"\n\n");
 	    	userDao.save(user);
 	        return Response.status(201).entity(user).build();
 	    }

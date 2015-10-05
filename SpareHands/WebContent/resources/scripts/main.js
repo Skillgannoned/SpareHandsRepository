@@ -1,9 +1,12 @@
-var loggedIn = false;
-
 $(document).ready(function() {
-	$('#logout').hide();
-	$('#applicationsNav').hide();
-	$('#profileNav').hide();
+	var cookie = getCookie("loginCookie=");
+
+	if(!cookie){
+		displayNoUserLoggedIn();
+	}
+	else{
+		displayUserLoggedIn();
+	}
 	
 	$("#advertsNav").click(function(event) {
 		advertsSelected();
@@ -21,27 +24,47 @@ $(document).ready(function() {
 		$('#adverts-section').hide();
 	});
 
-	$("#register-login").click(function(event) {
-		$('#register-login').hide();
-		$('#logout').show();
-		$('#applicationsNav').show();
-		$('#profileNav').show();
-		loggedIn = true;
-	});
-
 	$("#logout").click(function(event) {
-		$('#register-login').show();
+		$('#login').show();
+		$('#register').show();
 		$('#logout').hide();
 		$('#applicationsNav').hide();
 		$('#profileNav').hide();
-		loggedIn = false;
 		advertsSelected();
 	});
 });
+
+function displayNoUserLoggedIn(){
+	$('#applicationsNav').hide();
+	$('#profileNav').hide();
+	$('#logout').hide();
+	$('#login').show();
+	$('#register').show();
+}
+
+function displayUserLoggedIn(){
+	$('#applicationsNav').show();
+	$('#profileNav').show();
+	$('#logout').show();
+	$('#login').hide();
+	$('#register').hide();
+}
 
 function advertsSelected() {
 	$('#advertsNav').addClass('active').removeClass('inactive');
 	$('#applicationsNav').addClass('inactive').removeClass('active');
 	$('#profileNav').addClass('inactive').removeClass('active');
 	$('#adverts-section').show();
+}
+
+function getCookie(cookieName) {
+	var ca = document.cookie.split(';');
+	for (var i = 0; i < ca.length; i++) {
+		var c = ca[i];
+		while (c.charAt(0) == ' ')
+			c = c.substring(1);
+		if (c.indexOf(cookieName) == 0)
+			return c.substring(cookieName.length, c.length);
+	}
+	return "";
 }

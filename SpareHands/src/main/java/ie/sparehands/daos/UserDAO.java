@@ -40,16 +40,16 @@ public class UserDAO {
 		entityManager.remove(getUser(id));
 	}
 
-//
-//	public User getUserByEmail(final String email) {
-//		User user = null;
-//		final Query query=entityManager.createQuery("FROM User AS u WHERE u.email = :email");
-//		query.setParameter("email", email);
-//		try {
-//			user =  (User) query.getSingleResult();
-//		} catch (EntityNotFoundException | NonUniqueResultException e) {
-//			e.printStackTrace();
-//		}
-//		return user;
-//	}
+
+	public User getUserByEmail(final String email) {
+		User user = null;
+		final Query query=entityManager.createQuery("FROM User AS u WHERE u.email = :email");
+		query.setParameter("email", email);
+		try {
+			user =  (User) query.getSingleResult();
+		} catch (EntityNotFoundException | NonUniqueResultException e) {
+			e.printStackTrace();
+		}
+		return user;
+	}
 }

@@ -1,7 +1,7 @@
 package ie.sparehands.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +9,21 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 @Entity
 @Table(name = "user")
 public class User implements Serializable {
 
-    private static final long serialVersionUID = 1L;
+    @Override
+	public String toString() {
+		return "User [id=" + id + ", forename=" + forename + ", surname="
+				+ surname + ", email=" + email + ", password=" + password
+				+ ", dob=" + dob + ", picture_url=" + picture_url + "]";
+	}
+
+	private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -28,8 +37,8 @@ public class User implements Serializable {
     private String email; 
     @Column(name = "password")
     private String password;
-    @Column(name = "dob")
-    private java.sql.Timestamp dob; 
+    @Column(name = "dob", length = 19)
+    private Date dob; 
     @Column(name = "picture_url")
     private String picture_url;
 
@@ -39,7 +48,7 @@ public class User implements Serializable {
 	}
 
 	public User(String forename, String surname, String email, String password,
-			Timestamp dob, String picture_url) {
+			Date dob, String picture_url) {
 		super();
 		this.forename = forename;
 		this.surname = surname;
@@ -90,7 +99,8 @@ public class User implements Serializable {
 		this.password = password;
 	}
 
-	public java.sql.Timestamp getDob() {
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDob() {
 		return dob;
 	}
 

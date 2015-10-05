@@ -1,7 +1,7 @@
 package ie.sparehands.entities;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
+import java.util.Date;
 
 import javax.persistence.*;
 
@@ -32,8 +32,8 @@ public class Advert implements Serializable {
 	private String reward;	
 	@Column(name = "location") 
 	private String location;	
-    @Column(name = "date")
-    private java.sql.Timestamp date; 
+    @Column(name = "date", length = 19)
+    private Date date; 
 	@Column(name = "picture_url") 
 	private String picture_url;
 	
@@ -42,7 +42,7 @@ public class Advert implements Serializable {
 	}
 
 	public Advert(User owner, String title, String description, String reward,
-			String location, Timestamp date, String picture_url) {
+			String location, Date date, String picture_url) {
 		super();
 		this.owner = owner;
 		this.title = title;
@@ -98,8 +98,8 @@ public class Advert implements Serializable {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-
-	public java.sql.Timestamp getDate() {
+	@Temporal(TemporalType.TIMESTAMP)
+	public Date getDate() {
 		return date;
 	}
 
