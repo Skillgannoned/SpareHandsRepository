@@ -71,6 +71,6 @@ var  findUserByEmail= function(email) {
 function setCookie(id){
 	var a = new Date();
 	a = new Date(a.getTime() +1000*60*60*24*365);
-	document.cookie="cname=loginCookie;id="+id+";expires="+a.toGMTString()+';';
+	document.cookie="UserLoggedIn="+id+";expires="+a.toGMTString()+';';
 }
 

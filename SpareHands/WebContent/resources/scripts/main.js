@@ -1,5 +1,5 @@
 $(document).ready(function() {
-	var cookie = getCookie("loginCookie=");
+	var cookie = getCookie("UserLoggedIn=");
 
 	if(!cookie){
 		displayNoUserLoggedIn();
@@ -22,6 +22,7 @@ $(document).ready(function() {
 		$('#applicationsNav').addClass('inactive').removeClass('active');
 		$('#profileNav').addClass('active').removeClass('inactive');
 		$('#adverts-section').hide();
+		generateProfile();
 	});
 
 	$("#logout").click(function(event) {
@@ -55,6 +56,10 @@ function advertsSelected() {
 	$('#applicationsNav').addClass('inactive').removeClass('active');
 	$('#profileNav').addClass('inactive').removeClass('active');
 	$('#adverts-section').show();
+}
+
+function generateProfile(){
+	console.log(getCookie("UserLoggedIn="));
 }
 
 function getCookie(cookieName) {
