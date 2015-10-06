@@ -20,7 +20,7 @@ import ie.sparehands.daos.AdvertDAO;
 import ie.sparehands.entities.Advert;
 import ie.sparehands.entities.User;
 
-@Path("/advert")
+@Path("/job")
 @Stateless
 @LocalBean
 public class AdvertWS {
@@ -29,7 +29,7 @@ public class AdvertWS {
 	    private AdvertDAO advertDao;
 
 	    @GET 
-	    @Path("/allAdverts")
+	    @Path("/allJobs")
 	    @Produces({ MediaType.APPLICATION_JSON})
 	    public Response findAll() {
 	    	System.out.println("Get all adverts");
@@ -38,7 +38,7 @@ public class AdvertWS {
 	    }	   
 	  
 	    @GET
-		@Path("/allAdverts/{id}")
+		@Path("/allJobs/{id}")
 		@Produces({ MediaType.APPLICATION_JSON })
 		public Response findAdvertById(@PathParam("id") int id) {
 			final Advert advert = advertDao.getAdvert(id);
@@ -46,14 +46,14 @@ public class AdvertWS {
 		}
 	    
 	    @POST
-	    @Path("/addAdvert")
+	    @Path("/addJob")
 	    @Produces({ MediaType.APPLICATION_JSON })
 	    public Response saveAdvert(final Advert advert) {
 	    	advertDao.save(advert);
 	        return Response.status(201).entity(advert).build();
 	    }
 	    
-	    @PUT @Path("/editAdvert/{id}")
+	    @PUT @Path("/editJob/{id}")
 		@Consumes({ MediaType.APPLICATION_JSON })
 		public Response updateAdvert(Advert advert) {
 	    	advertDao.update(advert);
@@ -61,7 +61,7 @@ public class AdvertWS {
 		}
 	    
 	    @DELETE
-	    @Path("/deleteAdvert/{id}")
+	    @Path("/deleteJob/{id}")
 	    public Response deleteAdvert(@PathParam("id") int id){
 	    	System.out.println("advert " + id + " deleted");
 	    	advertDao.delete(id);

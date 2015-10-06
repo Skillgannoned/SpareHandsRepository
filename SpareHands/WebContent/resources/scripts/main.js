@@ -5,6 +5,7 @@ $(document).ready(function() {
 	$('#profile-section').hide();
 	var cookie = getCookie("UserLoggedIn=");
 
+	
 	if(!cookie){
 		displayNoUserLoggedIn();
 	}
@@ -20,12 +21,15 @@ $(document).ready(function() {
 		$('#applicationsNav').addClass('active').removeClass('inactive');
 		$('#profileNav').addClass('inactive').removeClass('active');
 		$('#adverts-section').hide();
-	});
+		$('#applications-section').show();
+		$('#profile-section').hide();
+		});
 	$("#profileNav").click(function(event) {
 		$('#advertsNav').addClass('inactive').removeClass('active');
 		$('#applicationsNav').addClass('inactive').removeClass('active');
 		$('#profileNav').addClass('active').removeClass('inactive');
 		$('#adverts-section').hide();
+		$('#applications-section').hide();
 		$('#profile-section').show();
 		generateProfile();
 	});
@@ -61,52 +65,20 @@ function advertsSelected() {
 	$('#applicationsNav').addClass('inactive').removeClass('active');
 	$('#profileNav').addClass('inactive').removeClass('active');
 	$('#adverts-section').show();
+	$('#applications-section').hide();
 	$('#profile-section').hide();
 }
 
-var HelloComponent = React.createClass({  
-    render: function() {
-    	return <div class="profile-photo">
-		<img src="\""{this.props.imageSource}""\"" alt="...">
-		</div>
-		<div class="profile-bio">
-		</div>
-        return <div>Hello {this.props.name}</div>;
-    }
-});
 
 function generateProfile(){
-	console.log(getCookie("UserLoggedIn="));
 	var userDetails = findUserById(getCookie("UserLoggedIn="));
-	console.log(userDetails);
-	React.render(
-		
-	);
+	var date = new Date(userDetails.dob);
+	date = date.customFormat( "#YYYY#-#MM#-#DD#" )
+	$("#myDetailsSection").show();
+	$("#myPasswordSection").hide();
+	$('#profileForeName').val(userDetails.forename);
+	$('#profileSurname').val(userDetails.surname);
+	$('#profileEmail').val(userDetails.email);
+	$('#profileDOB').val(date);
 }
 
-var  findUserById= function(id) {
-	var userData;
-	$.ajax({
-		type: 'GET',
-		url: rootURL + '/user/allUsers/' + id,
-		dataType: "json",
-		async: false,
-		success: function (data) {
-			userData = data
-		}
-	});
-	return userData;
-};
-
-
-function getCookie(cookieName) {
-	var ca = document.cookie.split(';');
-	for (var i = 0; i < ca.length; i++) {
-		var c = ca[i];
-		while (c.charAt(0) == ' ')
-			c = c.substring(1);
-		if (c.indexOf(cookieName) == 0)
-			return c.substring(cookieName.length, c.length);
-	}
-	return "";
-}

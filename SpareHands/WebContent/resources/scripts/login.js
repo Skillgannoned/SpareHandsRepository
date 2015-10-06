@@ -5,7 +5,7 @@ var rootURL = "http://localhost:8080/SpareHands/rest";
 $(document).ready(function() {
 	
 	$('#login').click(function(evnet){
-		clearModalErrorDiv();
+		clearModalErrorDiv("loginModalError");
 	});
 	
 	$('#loginButton').click(function(event){
@@ -16,7 +16,7 @@ $(document).ready(function() {
 });
 
 function verifyLogin(email, password){
-	clearModalErrorDiv();
+	clearModalErrorDiv("loginModalError");
 	if(!email || !password){
 		React.render( <p>Please fill Email & Password fields!</p>,
 			document.getElementById('loginModalError'));
@@ -46,31 +46,5 @@ function verifyLogin(email, password){
 	    	}
 	    }
 	}
-}
-
-function clearModalErrorDiv(){
-	while (myNode.firstChild) {
-	    myNode.removeChild(myNode.firstChild);
-	}
-}
-
-var  findUserByEmail= function(email) {
-	var userData;
-	$.ajax({
-		type: 'GET',
-		url: rootURL + '/user/email/' + email,
-		dataType: "json",
-		async: false,
-		success: function (data) {
-			userData = data
-		}
-	});
-	return userData;
-};
-
-function setCookie(id){
-	var a = new Date();
-	a = new Date(a.getTime() +1000*60*60*24*365);
-	document.cookie="UserLoggedIn="+id+";expires="+a.toGMTString()+';';
 }
 
