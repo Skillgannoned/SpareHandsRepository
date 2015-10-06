@@ -73,7 +73,6 @@ public class UserWS {
 	    @DELETE
 	    @Path("/deleteUser/{id}")
 	    public Response deleteUser(@PathParam("id") int id){
-	    	System.out.println("user " + id + " deleted");
 	    	userDao.delete(id);
 	    	return Response.status(204).build();
 	    }
