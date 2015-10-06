@@ -17,9 +17,14 @@
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
 <script type="text/babel" src="resources/scripts/generate-adverts.js"></script>
+<script src="resources/scripts/utils.js"></script>
 <script src="resources/scripts/main.js"></script>
 <script type="text/babel" src="resources/scripts/login.js"></script>
 <script type="text/babel" src="resources/scripts/register.js"></script>
+<script type="text/babel" src="resources/scripts/profile.js"></script>
+<script type="text/babel" src="resources/scripts/jobs.js"></script>
+<script src="http://fb.me/react-with-addons-0.12.2.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
 
 </head>
 <body>
@@ -65,28 +70,61 @@
 				<!-- /.col-lg-6 -->
 			</div>
 		</div>
-		<div class="container">
-			<div class="row" id="row1">
-				<div class="panel panel-primary">
-					<div class="panel-body">Basic panel example</div>
-				</div>
-				<div class="panel panel-primary">
-					<div class="panel-body">Basic panel example</div>
-				</div>
-				<div class="panel panel-primary">
-					<div class="panel-body">Basic panel example</div>
-				</div>
-			</div>
-		</div>
+		<div class="container"></div>
 	</section>
-
+	<section id="applications-section">
+	</section>
 	<section id="profile-section">
 		<div class="profile-content">
 			<div class="profile-photo">
 				<img src="resources/img/userProfiles/stock.jpg" alt="...">
 			</div>
 			<div class="profile-bio">
-				
+				<form class="modal-body">
+					<ul class="nav nav-tabs nav-justified">
+						<li role="presentation" class="active" id="myDetailsTab"><a href="#">My Details</a></li>
+						<li role="presentation" id="myPasswordTab"><a href="#">Change Password</a></li>
+					</ul><br>
+					<div id="myDetailsSection">
+						<div class="form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="First Name" id="profileForeName">
+						</div>
+						<div class="form-group">
+							<input type="text" class="form-control input-lg"
+								placeholder="Last Name" id="profileSurname">
+						</div>
+						<div class="form-group">
+							<input type="email" class="form-control input-lg"
+								placeholder="E-Mail Address" id="profileEmail">
+						</div>
+						<div class="form-group">
+							<input type="date" class="form-control input-lg"
+								placeholder="Date of Birth" id="profileDOB" min="1930-12-31"
+								max="2020-12-31">
+						</div>
+						<div class="modalError" id="updateProfileError"></div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary btn-lg btn-block"
+								id="saveChangesButton">Save Changes!</button>
+						</div>
+					</div>
+					<div id="myPasswordSection">
+						<div class="form-group">
+							<input type="password" class="form-control input-lg"
+								placeholder="New Password" id="profilePassword">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control input-lg"
+								placeholder="Confirm New Password" id="profilePasswordConfirm">
+						</div>
+						<div class="modalError" id="updatePasswordError"></div>
+						<div class="form-group">
+							<button type="button" class="btn btn-primary btn-lg btn-block"
+								id="updatePasswordButton">Save Password!</button>
+						</div>
+					</div>
+				</form>
 			</div>
 		</div>
 	</section>
@@ -144,6 +182,11 @@
 					<div class="form-group">
 						<input type="text" class="form-control input-lg"
 							placeholder="Last Name" id="registerSurname">
+					</div>
+					<div class="form-group">
+						<input type="date" class="form-control input-lg"
+							placeholder="Date of Birth" id="registerDOB" min="1930-12-31"
+							max="2020-12-31">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control input-lg"
