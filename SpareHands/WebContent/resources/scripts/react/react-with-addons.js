@@ -8534,7 +8534,7 @@ var ReactDOMIDOperations = {
     ) : invariant(!INVALID_PROPERTY_ERRORS.hasOwnProperty(name)));
 
     // If we're updating to null or undefined, we should remove the property
-    // from the DOM node instead of injobantly setting to a string. This
+    // from the DOM node instead of inadvertantly setting to a string. This
     // brings us in line with the same behavior we have on initial render.
     if (value != null) {
       DOMPropertyOperations.setValueForProperty(node, name, value);
@@ -14604,7 +14604,7 @@ var SELECTION_RESTORATION = {
 };
 
 /**
- * Suppresses events (blur/focus) that could be injobently dispatched due to
+ * Suppresses events (blur/focus) that could be inadvertently dispatched due to
  * high level DOM manipulations (like temporarily removing a text input from the
  * DOM).
  */

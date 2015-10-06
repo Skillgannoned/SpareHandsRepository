@@ -26,8 +26,8 @@ public class Applicant implements Serializable {
 	@JoinColumn(name = "applicant_id")
 	private User applicant;
 	@ManyToOne
-	@JoinColumn(name = "job_id")
-	private Job job;	
+	@JoinColumn(name = "advert_id")
+	private Advert advert;	
 	@Column(name="status")
 	private boolean status;
 	
@@ -35,11 +35,11 @@ public class Applicant implements Serializable {
 		super();
 	}
 
-	public Applicant(User owner, User applicant, Job job) {
+	public Applicant(User owner, User applicant, Advert advert) {
 		super();
 		this.owner = owner;
 		this.applicant = applicant;
-		this.job = job;
+		this.advert = advert;
 	}
 
 	public boolean isStatus() {
@@ -62,8 +62,8 @@ public class Applicant implements Serializable {
 		return applicant;
 	}
 
-	public Job getJob() {
-		return job;
+	public Advert getAdvert() {
+		return advert;
 	}
   
 }

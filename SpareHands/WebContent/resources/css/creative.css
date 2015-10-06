@@ -67,7 +67,7 @@ body {
 	text-decoration: none;
 }
 
-#jobs-section .sidebar {
+#adverts-section .sidebar {
 	width: 25%;
 	display: inline-block;
 	position: fixed;
@@ -75,29 +75,29 @@ body {
 	text-align: center;
 }
 
-#jobs-section .sidebar .panel {
+#adverts-section .sidebar .panel {
 	margin-left: 3.2%;
 	height: 50px;
 }
 
-#jobs-section .sidebar .col-lg-6 {
+#adverts-section .sidebar .col-lg-6 {
 	padding-top: 1.6%;
 	width: 100%;
 }
 
-#jobs-section .container {
+#adverts-section .container {
 	margin-left: 25%;
 	width: 75%;
 	display: inline-block;
 }
 
-#jobs-section .container .row {
+#adverts-section .container .row {
 	text-align: center;
 	max-height: 325px;
 	padding-top: 25px;
 }
 
-#jobs-section .container .panel {
+#adverts-section .container .panel {
 	width: 30%;
 	height: 300px;
 	max-height: 300px;

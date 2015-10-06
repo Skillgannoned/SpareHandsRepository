@@ -1,10 +1,11 @@
 var rootURL = "http://localhost:8080/SpareHands/rest";
 
 $(document).ready(function() {
-	$('#jobs-section').show();
+	$('#adverts-section').show();
 	$('#profile-section').hide();
 	var cookie = getCookie("UserLoggedIn=");
 
+	
 	if(!cookie){
 		displayNoUserLoggedIn();
 	}
@@ -12,22 +13,22 @@ $(document).ready(function() {
 		displayUserLoggedIn();
 	}
 	
-	$("#jobsNav").click(function(event) {
-		jobsSelected();
+	$("#advertsNav").click(function(event) {
+		advertsSelected();
 	});
 	$("#applicationsNav").click(function(event) {
-		$('#jobsNav').addClass('inactive').removeClass('active');
+		$('#advertsNav').addClass('inactive').removeClass('active');
 		$('#applicationsNav').addClass('active').removeClass('inactive');
 		$('#profileNav').addClass('inactive').removeClass('active');
-		$('#jobs-section').hide();
+		$('#adverts-section').hide();
 		$('#applications-section').show();
 		$('#profile-section').hide();
 		});
 	$("#profileNav").click(function(event) {
-		$('#jobsNav').addClass('inactive').removeClass('active');
+		$('#advertsNav').addClass('inactive').removeClass('active');
 		$('#applicationsNav').addClass('inactive').removeClass('active');
 		$('#profileNav').addClass('active').removeClass('inactive');
-		$('#jobs-section').hide();
+		$('#adverts-section').hide();
 		$('#applications-section').hide();
 		$('#profile-section').show();
 		generateProfile();
@@ -39,7 +40,7 @@ $(document).ready(function() {
 		$('#logout').hide();
 		$('#applicationsNav').hide();
 		$('#profileNav').hide();
-		jobsSelected();
+		advertsSelected();
 	});
 });
 
@@ -59,11 +60,11 @@ function displayUserLoggedIn(){
 	$('#register').hide();
 }
 
-function jobsSelected() {
-	$('#jobsNav').addClass('active').removeClass('inactive');
+function advertsSelected() {
+	$('#advertsNav').addClass('active').removeClass('inactive');
 	$('#applicationsNav').addClass('inactive').removeClass('active');
 	$('#profileNav').addClass('inactive').removeClass('active');
-	$('#jobs-section').show();
+	$('#adverts-section').show();
 	$('#applications-section').hide();
 	$('#profile-section').hide();
 }
@@ -75,10 +76,6 @@ function generateProfile(){
 	date = date.customFormat( "#YYYY#-#MM#-#DD#" )
 	$("#myDetailsSection").show();
 	$("#myPasswordSection").hide();
-	$("#myAccountSection").hide();
-	$('#myDetailsTab').addClass('active').removeClass('inactive');
-	$('#myPasswordTab').addClass('inactive').removeClass('active');
-	$('#myAccountTab').addClass('inactive').removeClass('active');
 	$('#profileForeName').val(userDetails.forename);
 	$('#profileSurname').val(userDetails.surname);
 	$('#profileEmail').val(userDetails.email);

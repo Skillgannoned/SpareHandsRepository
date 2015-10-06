@@ -122,29 +122,6 @@ function updatePassword(password){
 	$('#profilePasswordConfirm').val("");
 }
 
-function deleteAccount(user){
-	if(confirm("Are you sure you want to delete your account?")){
-		var userData;
-		$.ajax({
-			type: 'GET',
-			url: rootURL + '/job/getAllJobsByOwnerId/'+user.id,
-			dataType: "json",
-			async: false,
-			success: function (data) {
-				userData = data
-			}
-		});
-		console.log(userData);
-//		$.ajax({
-//			type: 'DELETE',
-//			contentType: 'application/json',
-//			url: rootURL + '/user/deleteUser/'+user.id,
-//			dataType: "json",
-//			success:function(){
-//				alert("Account Deleted");}
-//		});
-	}
-}
 function updateUserDetails(forename, surname, email, dob){
 	var user = findUserById(getCookie("UserLoggedIn="));
 	user.forename=forename;

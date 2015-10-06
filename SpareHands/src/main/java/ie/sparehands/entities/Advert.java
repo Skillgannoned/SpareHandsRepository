@@ -6,12 +6,12 @@ import java.util.Date;
 import javax.persistence.*;
 
 /**
- * Entity implementation class for Entity: Job
+ * Entity implementation class for Entity: Advert
  *
  */
 @Entity
-@Table(name="job")
-public class Job implements Serializable {
+@Table(name="advert")
+public class Advert implements Serializable {
 
 	
 	private static final long serialVersionUID = 1L;
@@ -20,8 +20,10 @@ public class Job implements Serializable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+
+	@ManyToOne
 	@JoinColumn(name = "owner_id")
-	private Integer owner_id;	
+	private User owner;	
 	@Column(name = "title") 
 	private String title;	
 	@Column(name = "description") 
@@ -35,21 +37,21 @@ public class Job implements Serializable {
 	@Column(name = "picture_url") 
 	private String picture_url;
 	
-	public Job() {
+	public Advert() {
 		super();
 	}
 
-	public Job(Integer owner_id, String title, String description, String reward,
+	public Advert(User owner, String title, String description, String reward,
 			String location, Date date, String picture_url) {
 		super();
-		this.owner_id = owner_id;
+		this.owner = owner;
 		this.title = title;
 		this.description = description;
 		this.reward = reward;
 		this.location = location;
 		this.date = date;
 		if(picture_url.equals("")){
-			this.picture_url = "resources/img/StockJobImage.jpg";
+			this.picture_url = "resources/img/StockAdvertImage.jpg";
 		}
 		else{
 			this.picture_url = picture_url;
@@ -57,12 +59,12 @@ public class Job implements Serializable {
 		
 	}
 
-	public Integer getOwnerId() {
-		return owner_id;
+	public User getUser() {
+		return owner;
 	}
 
-	public void setOwnerId(Integer owner_id) {
-		this.owner_id = owner_id;
+	public void setUser(User owner) {
+		this.owner = owner;
 	}
 
 	public String getTitle() {

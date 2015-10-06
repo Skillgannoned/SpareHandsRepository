@@ -16,7 +16,7 @@
 <script src="resources/scripts/react/JSXTransformer.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-<script type="text/babel" src="resources/scripts/generate-jobs.js"></script>
+<script type="text/babel" src="resources/scripts/generate-adverts.js"></script>
 <script src="resources/scripts/utils.js"></script>
 <script src="resources/scripts/main.js"></script>
 <script type="text/babel" src="resources/scripts/login.js"></script>
@@ -32,8 +32,8 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-content">
 				<div class="navbar-left">
-					<a href="#" class="active" id="jobsNav"> <span
-						class="glyphicon glyphicon-th" aria-hidden="true">Jobs</span>
+					<a href="#" class="active" id="advertsNav"> <span
+						class="glyphicon glyphicon-th" aria-hidden="true">Adverts</span>
 					</a> <a href="#" class="inactive" id="applicationsNav"> <span
 						class="glyphicon glyphicon-envelope" aria-hidden="true">Applications</span>
 					</a> <a href="#" class="inactive" id="profileNav"> <span
@@ -54,7 +54,7 @@
 			</div>
 		</nav>
 	</header>
-	<section id="jobs-section">
+	<section id="adverts-section">
 		<div class="sidebar">
 			<div class="panel panel-info">
 				<div class="col-lg-6">
@@ -84,7 +84,6 @@
 					<ul class="nav nav-tabs nav-justified">
 						<li role="presentation" class="active" id="myDetailsTab"><a href="#">My Details</a></li>
 						<li role="presentation" id="myPasswordTab"><a href="#">Change Password</a></li>
-						<li role="presentation" id="myAccountTab"><a href="#">Delete Account</a></li>
 					</ul><br>
 					<div id="myDetailsSection">
 						<div class="form-group">
@@ -123,17 +122,6 @@
 						<div class="form-group">
 							<button type="button" class="btn btn-primary btn-lg btn-block"
 								id="updatePasswordButton">Save Password!</button>
-						</div>
-					</div>
-					<div id="myAccountSection">
-						<div class="form-group">
-							<input type="password" class="form-control input-lg"
-								placeholder="Enter Password" id="deleteAccountPassword">
-						</div>
-						<div class="modalError" id="deleteAccountError"></div>
-						<div class="form-group">
-							<button type="button" class="btn btn-primary btn-lg btn-block"
-								id="deleteAccountButton">Delete Account!</button>
 						</div>
 					</div>
 				</form>
