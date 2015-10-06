@@ -3,6 +3,8 @@ var rootURL = "http://localhost:8080/SpareHands/rest";
 $(document).ready(function() {
 	$('#jobs-section').show();
 	$('#profile-section').hide();
+	$('#applications-section').hide();
+
 	var cookie = getCookie("UserLoggedIn=");
 
 	if(!cookie){
@@ -34,11 +36,9 @@ $(document).ready(function() {
 	});
 
 	$("#logout").click(function(event) {
-		$('#login').show();
-		$('#register').show();
-		$('#logout').hide();
-		$('#applicationsNav').hide();
-		$('#profileNav').hide();
+		displayNoUserLoggedIn();
+		document.cookie = "UserLoggedIn="+getCookie("UserLoggedIn=")+"; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+		console.log(cookie);
 		jobsSelected();
 	});
 });
