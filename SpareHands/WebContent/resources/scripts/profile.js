@@ -4,14 +4,26 @@ $(document).ready(function() {
 	$("#myDetailsTab").click(function(event){
 		$("#myDetailsSection").show();
 		$("#myPasswordSection").hide();
+		$("#myAccountSection").hide();
 		$('#myDetailsTab').addClass('active').removeClass('inactive');
-		$('#myPasswordTab').addClass('active').removeClass('active');
+		$('#myPasswordTab').addClass('inactive').removeClass('active');
+		$('#myAccountTab').addClass('inactive').removeClass('active');
 	});
 	$("#myPasswordTab").click(function(event){
 		$("#myDetailsSection").hide();
 		$("#myPasswordSection").show();
+		$("#myAccountSection").hide();
 		$('#myDetailsTab').addClass('inactive').removeClass('active');
 		$('#myPasswordTab').addClass('active').removeClass('inactive');
+		$('#myAccountTab').addClass('inactive').removeClass('active');
+	});
+	$("#myAccountTab").click(function(event){
+		$("#myDetailsSection").hide();
+		$("#myPasswordSection").hide();
+		$("#myAccountSection").show();
+		$('#myDetailsTab').addClass('inactive').removeClass('active');
+		$('#myPasswordTab').addClass('inactive').removeClass('active');
+		$('#myAccountTab').addClass('active').removeClass('inactive');
 	});
 	
 	$('#updatePasswordButton').click(function(event){
@@ -49,6 +61,24 @@ $(document).ready(function() {
 		}
 		else{
 			updateUserDetails(forename,surname,email,dob);
+		}
+	});
+	
+	$('#deleteAccountButton').click(function(event){
+		clearModalErrorDiv("deleteAccountError");
+		var password = $('#deleteAccountPassword').val();
+		var user = findUserById(getCookie("UserLoggedIn="));
+
+		if(!password){
+			React.render( <p>Empty Field!</p>,
+	    			document.getElementById('deleteAccountError'));
+		}
+		else if(password != user.password ){
+			React.render( <p>Incorrect Password!</p>,
+	    			document.getElementById('deleteAccountError'));
+		}
+		else{
+			deleteAccount(user);
 		}
 	});
 
