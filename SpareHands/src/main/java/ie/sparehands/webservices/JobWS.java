@@ -46,7 +46,7 @@ public class JobWS {
 		}
 	    
 	    @GET
-		@Path("/allJobs/{searchKey}")
+		@Path("/jobsByKey/{searchKey}")
 		@Produces({ MediaType.APPLICATION_JSON })
 		public Response findJobBySearchKey(@PathParam("searchKey") String searchKey) {
 			final List<Job> jobs = jobDao.getJobBySearchKey(searchKey);

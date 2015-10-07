@@ -8,7 +8,6 @@ $(document).ready(function() {
 	});
 	
 	$('#registerButton').click(function(event){
-		console.log("Reg");
 		verifyRegisterDetails($('#registerForeName').val(), $('#registerSurname').val(),
 				$('#registerDOB').val(), $('#registerEmail').val(), $('#registerPassword').val(),
 				$('#registerPasswordConfirm').val());

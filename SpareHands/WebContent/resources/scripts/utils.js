@@ -108,7 +108,6 @@ function updatePassword(password){
 		"dob": user.dob,
 		"picture_url": user.picture_url,
 	});
-	console.log(jsonString);
 	$.ajax({
 		type: 'PUT',
 		contentType: 'application/json',
@@ -137,7 +136,6 @@ function updateUserDetails(forename, surname, email, dob){
 		"dob": user.dob,
 		"picture_url": user.picture_url,
 	});
-	console.log(jsonString);
 	$.ajax({
 		type: 'PUT',
 		contentType: 'application/json',
@@ -182,9 +180,12 @@ function getAllJobs() {
 
 function getJobBySearchKey(searchKey) {
 	var allJobs;
+	if(!searchKey){
+		return getAllJobs();
+	}
 	$.ajax({
 		type: 'GET',
-		url: rootURL + '/job/allJobs/'+searchKey,
+		url: rootURL + '/job/jobsByKey/'+searchKey,
 		dataType: "json",
 		async: false,
 		success: function (data) {

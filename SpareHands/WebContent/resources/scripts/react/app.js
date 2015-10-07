@@ -9,15 +9,13 @@ var SearchBar = React.createClass({
 	},
 	render: function () {	
 		return (
-			<div className="panel panel-info">
-				<div className="col-lg-6">
+
 					<div className="input-group">
-						<input type="search" value={this.state.symbol} onChange={this.searchHandler} className="form-control"/> 
+						<input type="search" value={this.state.symbol} onChange={this.searchHandler} className="form-control" placeholder="Enter any search parameter..."/> 
 						<span className="input-group-btn">
 						</span>
 					</div>
-				</div>
-			</div>
+		
 	    );
 	}
 });
@@ -49,21 +47,64 @@ var JobList = React.createClass({
     }
 });
 
+var Paginator = React.createClass({
+
+    render: function () {
+        var pages = Math.ceil(this.props.total/this.props.pageSize);
+        console.log(this.props.pageSize);
+        return (
+            <div className="container">
+                <div className="row padding" style={{height: "40px"}}>
+                    <div className="col-xs-4 nopadding">
+                        <button type="button" className={"btn btn-default" + (this.props.page <= 1 ? " hidden" : "")} onClick={this.props.previous}>
+                            <span className="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> Previous
+                        </button>
+                    </div>
+                    <div className="col-xs-4 text-center">
+                        <div className="legend">{this.props.total} jobs • page {this.props.page}/{pages}</div>
+                    </div>
+                    <div className="col-xs-4 nopadding">
+                        <button type="button" className={"btn btn-default pull-right" + (this.props.page >= pages ? " hidden" : "")} onClick={this.props.next}>
+                        Next <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        );
+    }
+});
+
 var JobsGrid = React.createClass({
 	getInitialState: function() {
-        return {jobs: getAllJobs()}
+    	var data = getAllJobs();
+        return {
+        	searchKey:"",
+        	max:8,
+        	jobs: data,
+        	total: data.length,
+        	page: 1}
     },
     searchHandler:function(key) {
-        this.setState({searchKey: key, jobs: getJobBySearchKey(key)})
+    	var data = getJobBySearchKey(key);
+        this.setState({searchKey: key, jobs: data, total: data.length})
+    },
+    nextPage: function() {
+        var p = this.state.page + 1;
+        this.setState({page: p}, this.searchHandler);
+    },
+    prevPage: function() {
+        var p = this.state.page - 1;
+        this.setState({page: p}, this.searchHandler);
     },
     render: function () {
         return (
         	<div>
-	        	<div className="sidebar">
+	        	<div className="searchBar">
 	        		<SearchBar searchHandler={this.searchHandler} />
 	        	</div>
 	            <div className="container">
-	                <JobList jobs={this.state.jobs}/>
+	            	<Paginator page={this.state.page} pageSize={this.state.max} total={this.state.total} previous={this.prevPage} next={this.nextPage}/>
+	            	<JobList jobs={this.state.jobs}/>
 	            </div>
             </div>
         );

@@ -71,7 +71,7 @@ function jobsSelected() {
 function generateProfile(){
 	var userDetails = findUserById(getCookie("UserLoggedIn="));
 	var date = new Date(userDetails.dob);
-	date = date.customFormat( "#YYYY#-#MM#-#DD#" )
+	date = date.customFormat( "#YYYY#-#MM#-#DD#" );
 	$("#myDetailsSection").show();
 	$("#myPasswordSection").hide();
 	$("#myAccountSection").hide();
