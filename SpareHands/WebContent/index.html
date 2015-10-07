@@ -16,14 +16,15 @@
 <script src="resources/scripts/react/JSXTransformer.js"></script>
 <script
 	src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+<script src="http://fb.me/react-with-addons-0.12.2.js"></script>
+<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
 <script src="resources/scripts/utils.js"></script>
 <script src="resources/scripts/main.js"></script>
 <script type="text/babel" src="resources/scripts/login.js"></script>
 <script type="text/babel" src="resources/scripts/register.js"></script>
 <script type="text/babel" src="resources/scripts/profile.js"></script>
 <script type="text/babel" src="resources/scripts/jobs.js"></script>
-<script src="http://fb.me/react-with-addons-0.12.2.js"></script>
-<script src="http://fb.me/JSXTransformer-0.12.2.js"></script>
+<script type="text/babel" src="resources/scripts/react/app.js"></script>
 
 </head>
 <body>
@@ -53,26 +54,11 @@
 			</div>
 		</nav>
 	</header>
-	<section id="jobs-section">
-		<div class="sidebar">
-			<div class="panel panel-info">
-				<div class="col-lg-6">
-					<div class="input-group">
-						<input type="text" class="form-control"
-							placeholder="Search for..."> <span
-							class="input-group-btn">
-							<button class="btn btn-default" type="button">Go!</button>
-						</span>
-					</div>
-					<!-- /input-group -->
-				</div>
-				<!-- /.col-lg-6 -->
-			</div>
-		</div>
-		<div class="container"></div>
+	<section id="jobs-section" id="jobs-section">
+		
+			
 	</section>
-	<section id="applications-section">
-	</section>
+	<section id="applications-section"></section>
 	<section id="profile-section">
 		<div class="profile-content">
 			<div class="profile-photo">
@@ -81,10 +67,14 @@
 			<div class="profile-bio">
 				<form class="modal-body">
 					<ul class="nav nav-tabs nav-justified">
-						<li role="presentation" class="active" id="myDetailsTab"><a href="#">My Details</a></li>
-						<li role="presentation" id="myPasswordTab"><a href="#">Change Password</a></li>
-						<li role="presentation" id="myAccountTab"><a href="#">Delete Account</a></li>
-					</ul><br>
+						<li role="presentation" class="active" id="myDetailsTab"><a
+							href="#">My Details</a></li>
+						<li role="presentation" id="myPasswordTab"><a href="#">Change
+								Password</a></li>
+						<li role="presentation" id="myAccountTab"><a href="#">Delete
+								Account</a></li>
+					</ul>
+					<br>
 					<div id="myDetailsSection">
 						<div class="form-group">
 							<input type="text" class="form-control input-lg"

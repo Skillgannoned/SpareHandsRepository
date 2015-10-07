@@ -100,8 +100,19 @@ body {
 #jobs-section .container .panel {
 	width: 30%;
 	height: 300px;
+	margin-right:1.6%;
 	max-height: 300px;
 	display: inline-block;
+}
+
+#jobs-section .container .panel .panel-heading{
+	height:15%;
+}
+#jobs-section .container .panel .panel-body{
+	height:70%;
+}
+#jobs-section .container .panel .panel-footer{
+	height:15%;
 }
 
 .profile-content {
@@ -162,3 +173,4 @@ body {
 	text-align: center;
 	color: red;
 }
+

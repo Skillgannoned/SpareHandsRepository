@@ -5,10 +5,13 @@ import java.util.List;
 import javax.ejb.LocalBean;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
+import javax.persistence.EntityNotFoundException;
+import javax.persistence.NonUniqueResultException;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
 
 import ie.sparehands.entities.Job;
+import ie.sparehands.entities.User;
 
 @Stateless
 @LocalBean
@@ -37,14 +40,20 @@ public class JobDAO {
 	public void delete(final int id) {
 		entityManager.remove(getJob(id));
 	}
-	
-	public List<Object[]> getAllByOwnerId(final int ownerId) {
-		final Query query = entityManager.createQuery("SELECT u.id "
-				+ "FROM Job u "
-				+ "WHERE u.owner_id = 1");
-//		query.setParameter("ownerId", ownerId);
-		final List<Object[]> results = query.getResultList();
-		return results;
+
+	public List<Job> getJobBySearchKey(String searchKey) {
+		List<Job> jobs = null;
+		final Query query=entityManager.createQuery("SELECT j FROM Job j"
+				+ " WHERE j.title LIKE :searchKey "
+				+ " OR j.description LIKE :searchKey "
+				+ " OR j.location LIKE :searchKey");
+		query.setParameter("searchKey", "%"+searchKey+"%");
+		try {
+			jobs =  query.getResultList();
+		} catch (EntityNotFoundException | NonUniqueResultException e) {
+			e.printStackTrace();
+		}
+		return jobs;
 	}
 	
 }

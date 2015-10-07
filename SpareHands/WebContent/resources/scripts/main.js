@@ -38,7 +38,6 @@ $(document).ready(function() {
 	$("#logout").click(function(event) {
 		displayNoUserLoggedIn();
 		document.cookie = "UserLoggedIn="+getCookie("UserLoggedIn=")+"; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-		console.log(cookie);
 		jobsSelected();
 	});
 });

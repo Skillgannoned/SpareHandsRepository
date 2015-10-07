@@ -79,6 +79,9 @@ $(document).ready(function() {
 		}
 		else{
 			deleteAccount(user);
+			displayNoUserLoggedIn();
+			document.cookie = "UserLoggedIn="+getCookie("UserLoggedIn=")+"; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+			jobsSelected();
 		}
 	});
 

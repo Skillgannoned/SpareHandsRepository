@@ -42,7 +42,7 @@ function addUserToDB(formData){
 
 function addUserToDB(formData){
 	$.ajax({
-		type: 'PUT',
+		type: 'POST',
 		contentType: 'application/json',
 		url: rootURL + '/user/addUser',
 		dataType: "json",
@@ -122,29 +122,6 @@ function updatePassword(password){
 	$('#profilePasswordConfirm').val("");
 }
 
-function deleteAccount(user){
-	if(confirm("Are you sure you want to delete your account?")){
-		var userData;
-		$.ajax({
-			type: 'GET',
-			url: rootURL + '/job/getAllJobsByOwnerId/'+user.id,
-			dataType: "json",
-			async: false,
-			success: function (data) {
-				userData = data
-			}
-		});
-		console.log(userData);
-//		$.ajax({
-//			type: 'DELETE',
-//			contentType: 'application/json',
-//			url: rootURL + '/user/deleteUser/'+user.id,
-//			dataType: "json",
-//			success:function(){
-//				alert("Account Deleted");}
-//		});
-	}
-}
 function updateUserDetails(forename, surname, email, dob){
 	var user = findUserById(getCookie("UserLoggedIn="));
 	user.forename=forename;
@@ -176,11 +153,38 @@ function updateUserDetails(forename, surname, email, dob){
 	$('#profileDOB').val(user.dob);
 }
 
+function deleteAccount(user){
+	if(confirm("Are you sure you want to delete your account?")){
+		$.ajax({
+			type: 'DELETE',
+			contentType: 'application/json',
+			url: rootURL + '/user/deleteUser/'+user.id,
+			dataType: "json",
+			success:function(){
+				alert("Account Deleted");}
+		});
+	}
+}
+
 function getAllJobs() {
 	var allJobs;
 	$.ajax({
 		type: 'GET',
 		url: rootURL + '/job/allJobs',
+		dataType: "json",
+		async: false,
+		success: function (data) {
+			allJobs = data
+		}
+	});
+	return allJobs;
+};
+
+function getJobBySearchKey(searchKey) {
+	var allJobs;
+	$.ajax({
+		type: 'GET',
+		url: rootURL + '/job/allJobs/'+searchKey,
 		dataType: "json",
 		async: false,
 		success: function (data) {

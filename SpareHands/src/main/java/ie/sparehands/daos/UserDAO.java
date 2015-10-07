@@ -43,7 +43,8 @@ public class UserDAO {
 
 	public User getUserByEmail(final String email) {
 		User user = null;
-		final Query query=entityManager.createQuery("FROM User AS u WHERE u.email = :email");
+		final Query query=entityManager.createQuery("SELECT u FROM User u"
+				+ " WHERE u.email = :email");
 		query.setParameter("email", email);
 		try {
 			user =  (User) query.getSingleResult();
