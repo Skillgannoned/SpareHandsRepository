@@ -51,7 +51,6 @@ var Paginator = React.createClass({
 
     render: function () {
         var pages = Math.ceil(this.props.total/this.props.pageSize);
-        console.log(this.props.pageSize);
         return (
             <div className="container">
                 <div className="row padding" style={{height: "40px"}}>
@@ -76,25 +75,32 @@ var Paginator = React.createClass({
 
 var JobsGrid = React.createClass({
 	getInitialState: function() {
-    	var data = getAllJobs();
+    	var data = getJobBySearchKey("");
+    	var pagnated = data.slice(0,8);
         return {
         	searchKey:"",
-        	max:8,
-        	jobs: data,
+        	pageSize:8,
+        	jobs: pagnated,
         	total: data.length,
         	page: 1}
     },
     searchHandler:function(key) {
     	var data = getJobBySearchKey(key);
-        this.setState({searchKey: key, jobs: data, total: data.length})
+    	var pagnated = data.slice(0,8);
+        this.setState({searchKey: key, jobs: pagnated, total: data.length, page:1})
     },
     nextPage: function() {
         var p = this.state.page + 1;
-        this.setState({page: p}, this.searchHandler);
+        this.setState({page: p}, this.pageChange(this.state.searchKey));
     },
     prevPage: function() {
         var p = this.state.page - 1;
-        this.setState({page: p}, this.searchHandler);
+        this.setState({page: p}, this.pageChange(this.state.searchKey));
+    },
+    pageChange: function(key) {
+    	var data = getJobBySearchKey(key, this.state.page);
+    	var pagnated = data.slice((this.state.page-1)*8,this.state.page*this.state.pageSize);
+        this.setState({searchKey: key, jobs: pagnated, total: data.length})
     },
     render: function () {
         return (
@@ -103,7 +109,7 @@ var JobsGrid = React.createClass({
 	        		<SearchBar searchHandler={this.searchHandler} />
 	        	</div>
 	            <div className="container">
-	            	<Paginator page={this.state.page} pageSize={this.state.max} total={this.state.total} previous={this.prevPage} next={this.nextPage}/>
+	            	<Paginator page={this.state.page} pageSize={this.state.pageSize} total={this.state.total} previous={this.prevPage} next={this.nextPage}/>
 	            	<JobList jobs={this.state.jobs}/>
 	            </div>
             </div>

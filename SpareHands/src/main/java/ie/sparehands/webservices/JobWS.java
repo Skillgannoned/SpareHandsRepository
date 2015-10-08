@@ -49,7 +49,7 @@ public class JobWS {
 		@Path("/jobsByKey/{searchKey}")
 		@Produces({ MediaType.APPLICATION_JSON })
 		public Response findJobBySearchKey(@PathParam("searchKey") String searchKey) {
-			final List<Job> jobs = jobDao.getJobBySearchKey(searchKey);
+	    	final List<Job> jobs = jobDao.getJobBySearchKey(searchKey);
 			return Response.status(200).entity(jobs).build();
 		}
 	    

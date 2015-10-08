@@ -56,14 +56,5 @@ public class JobDAO {
 		}
 		return jobs;
 	}
-//	final Query query=entityManager.createQuery("SELECT * FROM (SELECT j FROM Job j"
-//			+ " WHERE j.title LIKE :searchKey"
-//			+ " OR j.description LIKE :searchKey"
-//			+ " OR j.location LIKE :searchKey)"
-//			+ " AS a"
-//			+ " ORDER BY a.id LIMIT 20 OFFSET :page");
-//	query.setParameter("searchKey", "%"+searchKey+"%");
-//	query.setParameter("page", (page-1)*20);
-
 	
 }
