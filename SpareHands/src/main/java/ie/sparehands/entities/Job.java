@@ -1,6 +1,9 @@
 package ie.sparehands.entities;
 
 import java.io.Serializable;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.persistence.*;
@@ -13,15 +16,15 @@ import javax.persistence.*;
 @Table(name="job")
 public class Job implements Serializable {
 
-	
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
+	@ManyToOne
 	@JoinColumn(name = "owner_id")
-	private Integer owner_id;	
+	private User owner;		
 	@Column(name = "title") 
 	private String title;	
 	@Column(name = "description") 
@@ -30,39 +33,31 @@ public class Job implements Serializable {
 	private String reward;	
 	@Column(name = "location") 
 	private String location;	
+	@Temporal(TemporalType.DATE)
     @Column(name = "date", length = 19)
     private Date date; 
-	@Column(name = "picture_url") 
-	private String picture_url;
 	
 	public Job() {
 		super();
 	}
 
-	public Job(Integer owner_id, String title, String description, String reward,
-			String location, Date date, String picture_url) {
+	public Job(User owner, String title, String description, String reward,
+			String location, Date date) {
 		super();
-		this.owner_id = owner_id;
+		this.owner = owner;
 		this.title = title;
 		this.description = description;
 		this.reward = reward;
 		this.location = location;
 		this.date = date;
-		if(picture_url.equals("")){
-			this.picture_url = "resources/img/StockJobImage.jpg";
-		}
-		else{
-			this.picture_url = picture_url;
-		}
-		
 	}
 
-	public Integer getOwnerId() {
-		return owner_id;
+	public User getOwner() {
+		return owner;
 	}
 
-	public void setOwnerId(Integer owner_id) {
-		this.owner_id = owner_id;
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
 
 	public String getTitle() {
@@ -96,21 +91,15 @@ public class Job implements Serializable {
 	public void setLocation(String location) {
 		this.location = location;
 	}
-	@Temporal(TemporalType.TIMESTAMP)
-	public Date getDate() {
-		return date;
+
+	public String getDate() throws ParseException {
+		DateFormat parser = new SimpleDateFormat("dd-MM-yyyy");
+		String fDate = parser.format(date);
+		return fDate;
 	}
 
 	public void setDate(java.sql.Timestamp date) {
 		this.date = date;
-	}
-
-	public String getPicture_url() {
-		return picture_url;
-	}
-
-	public void setPicture_url(String picture_url) {
-		this.picture_url = picture_url;
 	}
 
 	public Integer getId() {

@@ -23,11 +23,13 @@ var SearchBar = React.createClass({
 var JobListItem = React.createClass({
     render: function () {
         return (
-	        	<div className="panel panel-primary">
-					<div className="panel-heading">{this.props.job.title}</div>
-					<div className="panel-body">{this.props.job.description}</div>
-					<div className="panel-footer">{this.props.job.location} - {this.props.job.reward}</div>
-				</div>
+        		<a href="#" id="jobPanelClickable" data-toggle="modal" data-target="#jobDetailsModal" data-identity={this.props.job.id}> 
+		        	<div className="panel panel-primary">
+						<div className="panel-heading">{this.props.job.title}</div>
+						<div className="panel-body">{this.props.job.description}</div>
+						<div className="panel-footer">{this.props.job.location} • {this.props.job.date}</div>
+					</div>
+				</a>
         );
     }
 });
@@ -63,7 +65,7 @@ var Paginator = React.createClass({
                         <div className="legend">{this.props.total} jobs • page {this.props.page}/{pages}</div>
                     </div>
                     <div className="col-xs-4 nopadding">
-                        <button type="button" className={"btn btn-default pull-right" + (this.props.page >= pages ? " hidden" : "")} onClick={this.props.next}>
+                        <button type="button" className={"btn btn-default" + (this.props.page >= pages ? " hidden" : "")} onClick={this.props.next}>
                         Next <span className="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
                         </button>
                     </div>
@@ -90,12 +92,12 @@ var JobsGrid = React.createClass({
         this.setState({searchKey: key, jobs: pagnated, total: data.length, page:1})
     },
     nextPage: function() {
-        var p = this.state.page + 1;
-        this.setState({page: p}, this.pageChange(this.state.searchKey));
+    	this.state.page = this.state.page + 1;
+        this.setState({page: this.state.page}, this.pageChange(this.state.searchKey));
     },
     prevPage: function() {
-        var p = this.state.page - 1;
-        this.setState({page: p}, this.pageChange(this.state.searchKey));
+    	this.state.page = this.state.page - 1;
+        this.setState({page: this.state.page}, this.pageChange(this.state.searchKey));
     },
     pageChange: function(key) {
     	var data = getJobBySearchKey(key, this.state.page);
@@ -111,7 +113,7 @@ var JobsGrid = React.createClass({
 	            <div className="container">
 	            	<Paginator page={this.state.page} pageSize={this.state.pageSize} total={this.state.total} previous={this.prevPage} next={this.nextPage}/>
 	            	<JobList jobs={this.state.jobs}/>
-	            </div>
+            	</div>
             </div>
         );
     }

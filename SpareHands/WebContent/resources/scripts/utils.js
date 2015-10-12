@@ -27,7 +27,6 @@ function findUserByEmail(email) {
 	return userData;
 };
 
-
 function addUserToDB(formData){
 	$.ajax({
 		type: 'POST',
@@ -40,17 +39,7 @@ function addUserToDB(formData){
 	});
 }
 
-function addUserToDB(formData){
-	$.ajax({
-		type: 'POST',
-		contentType: 'application/json',
-		url: rootURL + '/user/addUser',
-		dataType: "json",
-		data: formData,
-		success:function(){
-			alert("User successfully added, try logging in!");}
-	});
-}
+
 function clearModalErrorDiv(div){
 	var myNode = document.getElementById(div);
 	while (myNode.firstChild) {
@@ -164,6 +153,29 @@ function deleteAccount(user){
 	}
 }
 
+function createJob(userId, title, description, date, location, reward){
+	var user = findUserById(userId);
+	var jsonString = JSON.stringify({ 
+		"owner":user,
+		"title": title, 
+		"description": description,
+		"reward": reward,
+		"location": location,
+		"date": date,
+	});	
+	console.log(jsonString);
+	$.ajax({
+		type: 'POST',
+		contentType: 'application/json',
+		url: rootURL + '/job/addJob',
+		dataType: "json",
+		data: jsonString,
+		success:function(){
+			alert("Job successfully created!");}
+	});
+}
+
+
 function getAllJobs() {
 	var allJobs;
 	$.ajax({
@@ -176,6 +188,20 @@ function getAllJobs() {
 		}
 	});
 	return allJobs;
+};
+
+function getJobById(id) {
+	var jobData;
+	$.ajax({
+		type: 'GET',
+		url: rootURL + '/job/allJobs/' + id,
+		dataType: "json",
+		async: false,
+		success: function (data) {
+			jobData = data
+		}
+	});
+	return jobData;
 };
 
 function getJobBySearchKey(searchKey) {

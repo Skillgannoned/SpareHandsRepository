@@ -23,6 +23,7 @@
 <script type="text/babel" src="resources/scripts/login.js"></script>
 <script type="text/babel" src="resources/scripts/register.js"></script>
 <script type="text/babel" src="resources/scripts/profile.js"></script>
+<script type="text/babel" src="resources/scripts/job.js"></script>
 <script type="text/babel" src="resources/scripts/react/app.js"></script>
 
 </head>
@@ -31,12 +32,14 @@
 		<nav class="navbar navbar-default navbar-fixed-top">
 			<div class="navbar-content">
 				<div class="navbar-left">
-					<a href="#" class="active" id="jobsNav"> <span
-						class="glyphicon glyphicon-th" aria-hidden="true">Jobs</span>
-					</a> <a href="#" class="inactive" id="applicationsNav"> <span
-						class="glyphicon glyphicon-envelope" aria-hidden="true">Applications</span>
-					</a> <a href="#" class="inactive" id="profileNav"> <span
-						class="glyphicon glyphicon-user" aria-hidden="true">Profile</span>
+					<a href="#" class="active" id="jobsNav"> 
+						<span class="glyphicon glyphicon-th" aria-hidden="true">Jobs</span>
+					</a>
+					<a href="#" class="inactive" id="applicationsNav"> 
+						<span class="glyphicon glyphicon-envelope" aria-hidden="true">Applications</span>
+					</a> 
+					<a href="#" class="inactive" id="profileNav"> 
+						<span class="glyphicon glyphicon-user" aria-hidden="true">Profile</span>
 					</a>
 				</div>
 				<div class="navbar-center">
@@ -53,8 +56,10 @@
 			</div>
 		</nav>
 	</header>
+	<a href="#" class="inactive" id="createJobButton" data-toggle="modal" data-target="#createJobModal">
+		 <span aria-hidden="true">Create Job</span>
+	</a>
 	<section id="jobs-section" id="jobs-section">
-		
 			
 	</section>
 	<section id="applications-section"></section>
@@ -206,6 +211,78 @@
 							id="registerButton">Register</button>
 					</div>
 				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--register modal-->
+<div id="createJobModal" class="modal fade" tabindex="-1" role="dialog"
+	aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h1 class="text-center">Register Details</h1>
+			</div>
+			<div class="modal-body">
+				<div id="modalError"></div>
+				<form class="modal-body">
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Title" id="createJobTitle">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Description" id="createJobDescription">
+					</div>
+					<div class="form-group">
+						<input type="date" class="form-control input-lg"
+							placeholder="Date" id="creatJobDate" min="1930-12-31"
+							max="2020-12-31">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Location" id="createJobLocation">
+					</div>
+					<div class="form-group">
+						<input type="text" class="form-control input-lg"
+							placeholder="Reward" id="createJobReward">
+					</div>
+					<div class="modalError" id="jobModalError"></div>
+					<div class="form-group">
+						<button type="button" class="btn btn-primary btn-lg btn-block"
+							id="createJobModalButton">Create Job!</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--register modal-->
+<div id="jobDetailsModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"
+					aria-hidden="true">×</button>
+				<h1 id="jobModalTitle"><span></span></h1>
+			</div>
+			<div class="well modal-body">
+				<div class="modal-body-left">
+					<div id="jobModalDescription"><h3>Description</h3><span></span></div>
+				</div>
+				<div class="modal-body-separator"></div>
+				<div class="modal-body-right">
+					<div id="jobModalDate"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span></div>				
+					<div id="jobModalLocation"><span class="glyphicon glyphicon-map-marker" aria-hidden="true"></span></div>
+					<div id="jobModalReward"><span class="glyphicon glyphicon-transfer" aria-hidden="true"></span></div>	
+					<div id="jobModalButtonContainer">
+						<button type="button" class="btn btn-primary btn-lg btn-block" id="jobModalApplyButton">Apply!</button>		
+					</div>	
+				</div>	
 			</div>
 		</div>
 	</div>

@@ -40,6 +40,8 @@ $(document).ready(function() {
 		document.cookie = "UserLoggedIn="+getCookie("UserLoggedIn=")+"; expires=Thu, 01 Jan 1970 00:00:00 UTC";
 		jobsSelected();
 	});
+	
+	$(document).on("click", '#jobPanelClickable', function(){showJobDetails($(this).data('identity'));});
 });
 
 function displayNoUserLoggedIn(){
@@ -48,6 +50,8 @@ function displayNoUserLoggedIn(){
 	$('#logout').hide();
 	$('#login').show();
 	$('#register').show();
+	$('#jobModalApplyButton').hide();
+	$('#createJobButton').hide();
 }
 
 function displayUserLoggedIn(){
@@ -56,6 +60,8 @@ function displayUserLoggedIn(){
 	$('#logout').show();
 	$('#login').hide();
 	$('#register').hide();
+	$('#jobModalApplyButton').show();
+	$('#createJobButton').show();
 }
 
 function jobsSelected() {
@@ -84,3 +90,12 @@ function generateProfile(){
 	$('#profileDOB').val(date);
 }
 
+function showJobDetails(id){
+	var jobData = getJobById(id);
+	$('#jobModalTitle span').text(jobData.title);
+	$('#jobModalDescription span').text(jobData.description);
+	$('#jobModalDate span').text(jobData.date);
+	$('#jobModalLocation span').html('<a href="https://www.google.ie/maps/search/'+jobData.location+'">'+jobData.location+'</a>');
+	$('#jobModalReward span').text(jobData.reward);
+
+}

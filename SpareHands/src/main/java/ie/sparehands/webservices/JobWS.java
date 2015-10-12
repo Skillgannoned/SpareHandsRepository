@@ -32,7 +32,6 @@ public class JobWS {
 	    @Path("/allJobs")
 	    @Produces({ MediaType.APPLICATION_JSON})
 	    public Response findAll() {
-	    	System.out.println("Get all jobs");
 	    	final List<Job> jobs = jobDao.getAllJobs();
 	        return Response.status(200).entity(jobs).build();
 	    }	   

@@ -22,21 +22,39 @@ body {
 	float: left;
 }
 
-.navbar-content .navbar-left .active, .navbar-content .navbar-left .inactive:hover
-	{
-	color: white;
-	padding-left: 5px;
-	margin-right: 5px;
-	/* 	border-left: 1px solid white;
- */
+.dropdown{
+	display:inline-block;
 }
 
-.navbar-content .navbar-left .inactive {
+.navbar-content .navbar-left .active{
+	color: white;
+	outline:0;
+	text-decoration: none;
+}
+
+.navbar-content .navbar-left .inactive:hover
+	{
+	color: #0279BA;
+	background-color: white;
+	border-color:white;
+	text-decoration: none;
+	-webkit-transition: .5s ease-in-out;
+	-moz-transition: .5s ease-in-out;
+	-ms-transition: .5s ease-in-out;
+	-o-transition: .5s ease-in-out;
+}
+
+.navbar-content .navbar-left a {
 	color: #b3b3b3;
 	padding-left: 5px;
 	margin-right: 5px;
-	/* 	border-left: 1px solid #b3b3b3;
- */
+	border-style:solid;
+	border-width:2px;
+	border-color:#0279BA;
+	border-radius:10px;
+	padding:5px;
+	margin-right:5px;
+	outline:0;
 }
 
 .navbar-content .navbar-center {
@@ -60,11 +78,23 @@ body {
 .navbar-right a {
 	color: #b3b3b3;
 	text-decoration: none;
+	border-style:solid;
+	border-width:2px;
+	border-color:#0279BA;
+	border-radius:10px;
+	padding:5px;
+	margin-right:5px;
+	outline:0;
 }
-
 .navbar-right a:hover {
-	color: white;
+	color: #0279BA;
+	background-color: white;
+	border-color:white;
 	text-decoration: none;
+	-webkit-transition: .5s ease-in-out;
+	-moz-transition: .5s ease-in-out;
+	-ms-transition: .5s ease-in-out;
+	-o-transition: .5s ease-in-out;
 }
 
 #jobs-section .searchBar {
@@ -72,33 +102,134 @@ body {
 	margin-left: 30%;
 	text-align: center;
 }
-
 #jobs-section .searchBar .input-group {
 	width: 100%;
 }
-
 #jobs-section .container {
 	width:100%;
 }
 #jobs-section .container .row {
 	text-align: center;
-	max-height: 325px;
+	margin-right:7.5%;
+	margin-left:7.5%;
+}
+#jobPanelClickable{
+	color: black;
+	outline: 0;
+	-webkit-transition: .7s ease-in-out;
+	-moz-transition: .7s ease-in-out;
+	-ms-transition: .7s ease-in-out;
+	-o-transition: .7s ease-in-out;
+}
+.row #jobPanelClickable:hover{
+	color:#c81804;
+	-webkit-transition: .7s ease-in-out;
+	-moz-transition: .7s ease-in-out;
+	-ms-transition: .7s ease-in-out;
+	-o-transition: .7s ease-in-out;
 }
 #jobs-section .container .panel {
-	width: 20%;
-	height: 250px;
-	margin:1.6%;
-	max-height: 300px;
+	width: 23%;
+	margin:1%;
+	height:250px;
 	display: inline-block;
 }
 #jobs-section .container .panel .panel-heading{
 	height:15%;
+	overflow:scroll;
 }
 #jobs-section .container .panel .panel-body{
 	height:70%;
+	overflow:scroll;
 }
 #jobs-section .container .panel .panel-footer{
 	height:15%;
+	bottom:0;
+	overflow:scroll;
+}
+#jobModalTitle {
+	text-align: center;
+    word-wrap: break-word;
+}
+
+#jobDetailsModal .modal-body{
+	margin:10px;
+	-webkit-border-bottom-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-moz-border-radius-bottomleft: 50px;
+	-moz-border-radius-bottomright: 50px;
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+	font-size: 16px;
+}
+.slide-button-container{
+	width:10%;
+	height:70px; 
+    position:fixed;
+    top:60px;
+    right:98%;
+    background:white;
+    -webkit-border-top-right-radius: 50px;
+    -webkit-border-bottom-right-radius: 50px;
+	-moz-border-radius-topright: 50px;
+	-moz-border-radius-bottomright: 50px;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+	font-size:10px;
+	box-shadow: 1px 1px 1px black;
+	text-align:right;
+}
+.slide-button-content{
+	display:inline-block;
+    position:relative;
+    top:20px;
+    margin-right:10px;
+    font-size:20px;
+}
+
+.slide-button-container:hover{
+	right:90%;
+    -webkit-transition: .7s ease-in-out;
+	-moz-transition: .7s ease-in-out;
+	-ms-transition: .7s ease-in-out;
+	-o-transition: .7s ease-in-out;
+}
+
+.corner-button-container .glyphicon{
+	vertical-align: top;
+}
+
+.modal-body-left{
+	width:65%;
+	display:inline-block;
+	min-height: 150px;
+	vertical-align:top;
+}
+.modal-body-separator{
+	width:1px;
+	display:inline-block;
+	min-height:150px;
+	background:black;
+	vertical-align:top;
+}
+.modal-body-right{
+	width:30%;
+	margin-left:1.6%;
+	display:inline-block;
+	min-height: 150px;
+    vertical-align:top;
+    text-align: left;
+}
+#jobModalDate, #jobModalLocation, #jobModalReward, #jobModalButtonContainer{
+	margin:10px;
+}
+
+#jobDetailsModal h3{
+	color: #0279BA;
+	text-align:left;
+	vertical-align: top;
+	margin-top:0;
+	padding:0;
 }
 
 .profile-content {
