@@ -23,6 +23,11 @@ $(document).ready(function() {
 		}
 		else{
 			createJob(userId, title, description, date, location, reward);
+			$('#createJobTitle').val('');
+			$('#createJobDescription').val('');
+			$('#creatJobDate').val('');
+			$('#createJobLocation').val('');
+			$('#createJobReward').val('');
 		}
 	});
 

@@ -1,0 +1,71 @@
+.modal-body-left{
+	width:65%;
+	display:inline-block;
+	min-height: 150px;
+	vertical-align:top;
+}
+.modal-body-separator{
+	width:1px;
+	display:inline-block;
+	min-height:150px;
+	background:black;
+	vertical-align:top;
+}
+.modal-body-right{
+	width:30%;
+	margin-left:1.6%;
+	display:inline-block;
+	min-height: 150px;
+    vertical-align:top;
+    text-align: left;
+}
+.modal-content {
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+}
+.modal-header {
+	background-color: white;
+	color: #0279BA;
+	-webkit-border-top-left-radius: 50px;
+	-webkit-border-top-right-radius: 50px;
+	-moz-border-radius-topleft: 50px;
+	-moz-border-radius-topright: 50px;
+	border-top-left-radius: 50px;
+	border-top-right-radius: 50px;
+}
+.modalError {
+	text-align: center;
+	color: red;
+}
+.modal-content {
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+}
+
+#jobModalTitle {
+	text-align: center;
+    word-wrap: break-word;
+    text-shadow: 1px 1px black;
+}
+#jobDetailsModal .modal-body{
+	margin:10px;
+	-webkit-border-bottom-left-radius: 50px;
+	-webkit-border-bottom-right-radius: 50px;
+	-moz-border-radius-bottomleft: 50px;
+	-moz-border-radius-bottomright: 50px;
+	border-bottom-left-radius: 50px;
+	border-bottom-right-radius: 50px;
+	font-size: 16px;
+}
+#jobModalDate, #jobModalLocation, #jobModalReward, #jobModalButtonContainer{
+	margin:10px;
+}
+#jobDetailsModal h3{
+	color: #0279BA;
+	text-align:left;
+	vertical-align: top;
+	margin-top:0;
+	padding:0;
+}

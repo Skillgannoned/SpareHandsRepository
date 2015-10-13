@@ -1,4 +1,5 @@
 var rootURL = "http://localhost:8080/SpareHands/rest";
+var menuLeft = document.getElementById( 'cbp-spmenu-s1' );
 
 $(document).ready(function() {
 	$('#jobs-section').show();
@@ -17,19 +18,25 @@ $(document).ready(function() {
 	$("#jobsNav").click(function(event) {
 		jobsSelected();
 	});
+	$("#myJobsNav").click(function(event) {
+		$('#jobsNav').addClass('inactive').removeClass('active');
+		$('#jobs-section').hide();
+		$('#myjobs-section').show();
+		$('#applications-section').hide();
+		$('#profile-section').hide();
+		generateMyJobs();
+		});
 	$("#applicationsNav").click(function(event) {
 		$('#jobsNav').addClass('inactive').removeClass('active');
-		$('#applicationsNav').addClass('active').removeClass('inactive');
-		$('#profileNav').addClass('inactive').removeClass('active');
 		$('#jobs-section').hide();
+		$('#myjobs-section').hide();
 		$('#applications-section').show();
 		$('#profile-section').hide();
 		});
 	$("#profileNav").click(function(event) {
 		$('#jobsNav').addClass('inactive').removeClass('active');
-		$('#applicationsNav').addClass('inactive').removeClass('active');
-		$('#profileNav').addClass('active').removeClass('inactive');
 		$('#jobs-section').hide();
+		$('#myjobs-section').hide();
 		$('#applications-section').hide();
 		$('#profile-section').show();
 		generateProfile();
@@ -38,25 +45,30 @@ $(document).ready(function() {
 	$("#logout").click(function(event) {
 		displayNoUserLoggedIn();
 		document.cookie = "UserLoggedIn="+getCookie("UserLoggedIn=")+"; expires=Thu, 01 Jan 1970 00:00:00 UTC";
+		$('#nav_list').removeClass('active').addClass('inactive');
+		$('.pushmenu-push').removeClass('pushmenu-push-toright');
+		$('.pushmenu-left').removeClass('pushmenu-open');
 		jobsSelected();
 	});
+	
+	$("#showLeft").click = function() {
+		classie.toggle( this, 'active' );
+		classie.toggle( menuLeft, 'cbp-spmenu-open' );
+		disableOther( 'showLeft' );
+	};
 	
 	$(document).on("click", '#jobPanelClickable', function(){showJobDetails($(this).data('identity'));});
 });
 
 function displayNoUserLoggedIn(){
-	$('#applicationsNav').hide();
-	$('#profileNav').hide();
-	$('#logout').hide();
+	$('#nav_list').hide();
 	$('#login').show();
 	$('#register').show();
 	$('#jobModalApplyButton').hide();
-	$('#createJobButton').hide();
 }
 
 function displayUserLoggedIn(){
-	$('#applicationsNav').show();
-	$('#profileNav').show();
+	$('#nav_list').show();
 	$('#logout').show();
 	$('#login').hide();
 	$('#register').hide();
@@ -66,8 +78,6 @@ function displayUserLoggedIn(){
 
 function jobsSelected() {
 	$('#jobsNav').addClass('active').removeClass('inactive');
-	$('#applicationsNav').addClass('inactive').removeClass('active');
-	$('#profileNav').addClass('inactive').removeClass('active');
 	$('#jobs-section').show();
 	$('#applications-section').hide();
 	$('#profile-section').hide();
@@ -97,5 +107,8 @@ function showJobDetails(id){
 	$('#jobModalDate span').text(jobData.date);
 	$('#jobModalLocation span').html('<a href="https://www.google.ie/maps/search/'+jobData.location+'">'+jobData.location+'</a>');
 	$('#jobModalReward span').text(jobData.reward);
+}
+
+function generateMyJobs(){
 
 }
