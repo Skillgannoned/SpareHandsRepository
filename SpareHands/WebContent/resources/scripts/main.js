@@ -1,5 +1,6 @@
 var rootURL = "http://localhost:8080/SpareHands/rest";
 var menuLeft = document.getElementById( 'cbp-spmenu-s1' );
+var fileRegex = /\.(gif|jpg|jpeg|png)$/i;
 
 $(document).ready(function() {
 	$('#jobs-section').show();
@@ -56,6 +57,22 @@ $(document).ready(function() {
 		classie.toggle( menuLeft, 'cbp-spmenu-open' );
 		disableOther( 'showLeft' );
 	};
+	
+	$("#imageFileName").change(function(){
+		console.log($("#imageFileName").val());
+		$('.uploadImageModalMessage span').text($("#imageFileName").val().replace('C:\\fakepath\\','.../'));
+		if(fileRegex.test($("#imageFileName").val())){
+			$('#uploadImageButton').show();
+		}else{
+			$('#uploadImageButton').hide();
+		}
+	});
+	
+	$('#uploadImageButton').click(function(){
+		$("#imageFileName").val('');
+		$('#uploadImageButton').hide();
+	});
+	
 	
 	$(document).on("click", '#jobPanelClickable', function(){showJobDetails($(this).data('identity'));});
 });

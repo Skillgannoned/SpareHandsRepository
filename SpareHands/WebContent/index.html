@@ -156,7 +156,6 @@
 	</div>
 </body>
 
-<!--login modal-->
 <div id="loginModal" class="modal fade" tabindex="-1" role="dialog"
 	aria-hidden="true">
 	<div class="modal-dialog">
@@ -187,7 +186,6 @@
 	</div>
 </div>
 
-<!--register modal-->
 <div id="registerModal" class="modal fade" tabindex="-1" role="dialog"
 	aria-hidden="true">
 	<div class="modal-dialog">
@@ -236,7 +234,6 @@
 	</div>
 </div>
 
-<!--register modal-->
 <div id="createJobModal" class="modal fade" tabindex="-1" role="dialog"
 	aria-hidden="true">
 	<div class="modal-dialog">
@@ -244,7 +241,7 @@
 			<div class="modal-header">
 				<button type="button" class="close" data-dismiss="modal"
 					aria-hidden="true">×</button>
-				<h1 class="text-center">Register Details</h1>
+				<h1 class="text-center">Job Details</h1>
 			</div>
 			<div class="modal-body">
 				<form class="modal-body">
@@ -280,7 +277,6 @@
 	</div>
 </div>
 
-<!--register modal-->
 <div id="jobDetailsModal" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
 	<div class="modal-dialog">
 		<div class="modal-content">
@@ -307,7 +303,6 @@
 	</div>
 </div>
 
-<!--register modal-->
 <div id="uploadImageModal" class="modal fade" tabindex="-1" role="dialog"
 	aria-hidden="true">
 	<div class="modal-dialog">
@@ -318,7 +313,15 @@
 				<h1 class="text-center">Choose Image</h1>
 			</div>
 			<div class="modal-body">
-			
+				<form action="rest/files/upload" method="post" enctype="multipart/form-data">
+					<span class="btn btn-default btn-file"> Browse... <input
+						type="file" name="file" size="50" id="imageFileName">
+					</span>
+					<span class="btn btn-default btn-file" id="uploadImageButton" hidden="true">Upload!<input
+						 type="submit">
+					</span>
+				</form>
+				<div class="uploadImageModalMessage"><span></span></div>
 			</div>
 		</div>
 	</div>
