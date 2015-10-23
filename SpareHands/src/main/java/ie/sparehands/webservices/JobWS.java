@@ -60,13 +60,6 @@ public class JobWS {
 	        return Response.status(201).entity(job).build();
 	    }
 	    
-	    @PUT @Path("/editJob/{id}")
-		@Consumes({ MediaType.APPLICATION_JSON })
-		public Response updateJob(Job job) {
-	    	jobDao.update(job);
-			return Response.status(200).entity(job).build();
-		}
-	    
 	    @DELETE
 	    @Path("/deleteJob/{id}")
 	    public Response deleteJob(@PathParam("id") int id){

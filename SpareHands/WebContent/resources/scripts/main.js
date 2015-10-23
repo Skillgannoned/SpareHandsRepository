@@ -6,6 +6,7 @@ $(document).ready(function() {
 	$('#jobs-section').show();
 	$('#profile-section').hide();
 	$('#applications-section').hide();
+	$('#uploadImageButton').hide();
 
 	var cookie = getCookie("UserLoggedIn=");
 
@@ -26,6 +27,7 @@ $(document).ready(function() {
 		$('#applications-section').hide();
 		$('#profile-section').hide();
 		generateMyJobs();
+		closeNavBar();
 		});
 	$("#applicationsNav").click(function(event) {
 		$('#jobsNav').addClass('inactive').removeClass('active');
@@ -33,6 +35,7 @@ $(document).ready(function() {
 		$('#myjobs-section').hide();
 		$('#applications-section').show();
 		$('#profile-section').hide();
+		closeNavBar();
 		});
 	$("#profileNav").click(function(event) {
 		$('#jobsNav').addClass('inactive').removeClass('active');
@@ -41,15 +44,14 @@ $(document).ready(function() {
 		$('#applications-section').hide();
 		$('#profile-section').show();
 		generateProfile();
+		closeNavBar();
 	});
 
 	$("#logout").click(function(event) {
 		displayNoUserLoggedIn();
 		document.cookie = "UserLoggedIn="+getCookie("UserLoggedIn=")+"; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-		$('#nav_list').removeClass('active').addClass('inactive');
-		$('.pushmenu-push').removeClass('pushmenu-push-toright');
-		$('.pushmenu-left').removeClass('pushmenu-open');
 		jobsSelected();
+		closeNavBar();
 	});
 	
 	$("#showLeft").click = function() {
@@ -60,7 +62,7 @@ $(document).ready(function() {
 	
 	$("#imageFileName").change(function(){
 		console.log($("#imageFileName").val());
-		$('.uploadImageModalMessage span').text($("#imageFileName").val().replace('C:\\fakepath\\','.../'));
+		$('.uploadImageModalMessage span').text($("#imageFileName").val().replace('C:\\fakepath\\',''));
 		if(fileRegex.test($("#imageFileName").val())){
 			$('#uploadImageButton').show();
 		}else{
@@ -69,13 +71,17 @@ $(document).ready(function() {
 	});
 	
 	$('#uploadImageButton').click(function(){
-		$("#imageFileName").val('');
-		$('#uploadImageButton').hide();
+		updateUserPicture($("#imageFileName").val().replace('C:\\fakepath\\','resources/img/userProfiles/'));
 	});
-	
 	
 	$(document).on("click", '#jobPanelClickable', function(){showJobDetails($(this).data('identity'));});
 });
+
+function closeNavBar(){
+	$('#nav_list').removeClass('active').addClass('inactive');
+	$('.pushmenu-push').removeClass('pushmenu-push-toright');
+	$('.pushmenu-left').removeClass('pushmenu-open');
+}
 
 function displayNoUserLoggedIn(){
 	$('#nav_list').hide();
@@ -111,6 +117,8 @@ function generateProfile(){
 	$('#myDetailsTab').addClass('active').removeClass('inactive');
 	$('#myPasswordTab').addClass('inactive').removeClass('active');
 	$('#myAccountTab').addClass('inactive').removeClass('active');
+	console.log(userDetails.picture_url);
+	$('#profileImage').attr("src",userDetails.picture_url);
 	$('#profileForeName').val(userDetails.forename);
 	$('#profileSurname').val(userDetails.surname);
 	$('#profileEmail').val(userDetails.email);
@@ -127,5 +135,5 @@ function showJobDetails(id){
 }
 
 function generateMyJobs(){
-
+	
 }

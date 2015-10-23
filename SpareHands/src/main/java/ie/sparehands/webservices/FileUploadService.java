@@ -23,8 +23,7 @@ public class FileUploadService {
 	@POST
 	@Path("/upload")
 	@Consumes("multipart/form-data")
-	public Response uploadFile(MultipartFormDataInput input) {
-		System.out.println("Input"+input.getFormDataMap().toString());
+	public void uploadFile(MultipartFormDataInput input) {
 		String fileName = "";
 		Map<String, List<InputPart>> formParts = input.getFormDataMap();
 		List<InputPart> inPart = formParts.get("file");
@@ -43,8 +42,6 @@ public class FileUploadService {
 				e.printStackTrace();
 			}
 		}
-		String output = "File saved to server location : " + fileName;
-		return Response.status(200).entity(output).build();
 	}
 
 	// Parse Content-Disposition header to get the original file name

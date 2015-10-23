@@ -52,14 +52,6 @@ public class ApplicantWS {
 		return Response.status(201).entity(applicant).build();
 	}
 
-	@PUT
-	@Path("/editApplicant/{id}")
-	@Consumes({ MediaType.APPLICATION_JSON })
-	public Response updateApplicant(Applicant applicant) {
-		applicantDao.update(applicant);
-		return Response.status(200).entity(applicant).build();
-	}
-
 	@DELETE
 	@Path("/deleteApplicant/{id}")
 	public Response deleteApplicant(@PathParam("id") int id) {

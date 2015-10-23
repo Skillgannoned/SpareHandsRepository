@@ -12,6 +12,7 @@ $(document).ready(function() {
 				$('#registerDOB').val(), $('#registerEmail').val(), $('#registerPassword').val(),
 				$('#registerPasswordConfirm').val());
 	});
+	
 });
 
 function verifyRegisterDetails(forename, surname, dob, email, password1, password2){

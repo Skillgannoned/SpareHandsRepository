@@ -134,9 +134,11 @@ body {
 .brightness #editProfilePicture:hover {
     opacity: .5;
 }
-.uploadImageModal .modal-body{
+#uploadImageModal .modal-body{
 	text-align:center;
+	margin:0 auto;
 }
+
 .btn-file {
     position: relative;
     overflow: hidden;

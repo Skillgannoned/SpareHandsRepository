@@ -140,6 +140,34 @@ function updateUserDetails(forename, surname, email, dob){
 	$('#profileDOB').val(user.dob);
 }
 
+function updateUserPicture(pictureURL){
+	var user = findUserById(getCookie("UserLoggedIn="));
+	user.picture_url=pictureURL;
+	var jsonString = JSON.stringify({ 
+		"id":user.id,
+		"forename": user.forename, 
+		"surname": user.surname,
+		"email": user.email,
+		"password": user.password,
+		"dob": user.dob,
+		"picture_url": user.picture_url,
+	});
+	$.ajax({
+		type: 'PUT',
+		contentType: 'application/json',
+		url: rootURL + '/user/editUser/'+user.id,
+		dataType: "json",
+		data: jsonString,
+		success:function(){}
+	});
+	var millisecondsToWait = 2000;
+	setTimeout(function() {
+		$("#imageFileName").val('');
+		$('#uploadImageButton').hide();
+	}, millisecondsToWait);
+	
+}
+
 function deleteAccount(user){
 	if(confirm("Are you sure you want to delete your account?")){
 		$.ajax({

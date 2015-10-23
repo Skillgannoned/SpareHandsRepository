@@ -11,8 +11,8 @@
 }
 #jobs-section .container .row {
 	text-align: center;
-	margin-right:7.5%;
-	margin-left:7.5%;
+	margin-right:5%;
+	margin-left:5%;
 }
 #jobPanelClickable{
 	color: black;
@@ -30,7 +30,7 @@
 	-o-transition: .7s ease-in-out;
 }
 #jobs-section .container .panel {
-	width: 23%;
+	width: 250px;
 	margin:1%;
 	height:250px;
 	display: inline-block;
