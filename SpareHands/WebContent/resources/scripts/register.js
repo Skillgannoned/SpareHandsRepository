@@ -3,7 +3,7 @@ var rootURL = "http://localhost:8080/SpareHands/rest";
 
 $(document).ready(function() {
 
-	$('#register').click(function(evnet){
+	$('#register').click(function(event){
 		clearModalErrorDiv("registerModalError");
 	});
 	

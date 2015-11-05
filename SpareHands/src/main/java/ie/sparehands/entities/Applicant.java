@@ -42,7 +42,7 @@ public class Applicant implements Serializable {
 		this.job = job;
 	}
 
-	public boolean isStatus() {
+	public boolean getStatus() {
 		return status;
 	}
 

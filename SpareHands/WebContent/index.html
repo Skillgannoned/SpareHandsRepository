@@ -210,7 +210,7 @@
 					<div class="form-group">
 						<input type="date" class="form-control input-lg"
 							placeholder="Date of Birth" id="registerDOB" min="1930-12-31"
-							max="2020-12-31">
+							max="2005-12-30">
 					</div>
 					<div class="form-group">
 						<input type="text" class="form-control input-lg"
@@ -224,7 +224,7 @@
 						<input type="password" class="form-control input-lg"
 							placeholder="Confirm Password" id="registerPasswordConfirm">
 					</div>
-					<div class="modalError" id="registerModalError"></div>
+					<div class="modalError" id="registerModalError"><span></span></div>
 					<div class="form-group">
 						<button type="button" class="btn btn-primary btn-lg btn-block"
 							id="registerButton">Register</button>
@@ -256,7 +256,7 @@
 					</div>
 					<div class="form-group">
 						<input type="date" class="form-control input-lg"
-							placeholder="Date" id="creatJobDate" min="1930-12-31"
+							placeholder="Date" id="creatJobDate" min="2015-11-06"
 							max="2020-12-31">
 					</div>
 					<div class="form-group">
@@ -322,7 +322,15 @@
 						 type="submit">
 					</span>
 				</form>
-				<div class="uploadImageModalMessage"><span></span></div>
+				<div class="uploadImageModalMessage">
+					<span></span>
+				</div>
+				<div class="progress">
+					<div class="progress-bar progress-bar-info progress-bar-striped" id="uploadProgress"
+						role="progressbar" aria-valuenow="0" aria-valuemin="0"
+						aria-valuemax="100" style="width: 0%">
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -61,17 +61,17 @@ $(document).ready(function() {
 	};
 	
 	$("#imageFileName").change(function(){
-		console.log($("#imageFileName").val());
 		$('.uploadImageModalMessage span').text($("#imageFileName").val().replace('C:\\fakepath\\',''));
 		if(fileRegex.test($("#imageFileName").val())){
 			$('#uploadImageButton').show();
 		}else{
 			$('#uploadImageButton').hide();
+			
 		}
 	});
 	
 	$('#uploadImageButton').click(function(){
-		updateUserPicture($("#imageFileName").val().replace('C:\\fakepath\\','resources/img/userProfiles/'));
+		updateUserPicture($("#imageFileName").val().replace('C:\\fakepath\\','resources/img/userProfiles/'));		
 	});
 	
 	$(document).on("click", '#jobPanelClickable', function(){showJobDetails($(this).data('identity'));});
@@ -117,7 +117,6 @@ function generateProfile(){
 	$('#myDetailsTab').addClass('active').removeClass('inactive');
 	$('#myPasswordTab').addClass('inactive').removeClass('active');
 	$('#myAccountTab').addClass('inactive').removeClass('active');
-	console.log(userDetails.picture_url);
 	$('#profileImage').attr("src",userDetails.picture_url);
 	$('#profileForeName').val(userDetails.forename);
 	$('#profileSurname').val(userDetails.surname);

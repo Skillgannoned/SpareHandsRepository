@@ -20,13 +20,6 @@ import javax.persistence.TemporalType;
 @Table(name = "user")
 public class User implements Serializable {
 
-    @Override
-	public String toString() {
-		return "User [id=" + id + ", forename=" + forename + ", surname="
-				+ surname + ", email=" + email + ", password=" + password
-				+ ", dob=" + dob + ", picture_url=" + picture_url + "]";
-	}
-
 	private static final long serialVersionUID = 1L;
 
     @Id
@@ -61,7 +54,7 @@ public class User implements Serializable {
 		this.password = password;
 		this.dob = dob;
 		if(picture_url.equals("")){
-			this.picture_url = "resources/img/StockProfileImage.jpg";
+			this.picture_url = "resources/img/userProfiles/stock.jpg";
 		}
 		else{
 			this.picture_url = picture_url;

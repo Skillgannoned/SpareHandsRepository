@@ -161,11 +161,18 @@ function updateUserPicture(pictureURL){
 		success:function(){}
 	});
 	var millisecondsToWait = 2000;
+	for(var i=0;i<100;i++){
+		setTimeout(function() {
+			$('#uploadProgress').css('width', i+'%').attr('aria-valuenow', i);	
+		}, (millisecondsToWait-200)/100);
+	}
 	setTimeout(function() {
 		$("#imageFileName").val('');
 		$('#uploadImageButton').hide();
-	}, millisecondsToWait);
-	
+		$('#uploadImageModal').modal('toggle');
+		alert('Changes will be visible on next refresh');
+	}, (millisecondsToWait));
+
 }
 
 function deleteAccount(user){
@@ -191,7 +198,6 @@ function createJob(userId, title, description, date, location, reward){
 		"location": location,
 		"date": date,
 	});	
-	console.log(jsonString);
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',
