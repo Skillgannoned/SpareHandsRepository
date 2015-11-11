@@ -238,6 +238,20 @@ function getJobById(id) {
 	return jobData;
 };
 
+function getJobByOwner(id) {
+	var jobData;
+	$.ajax({
+		type: 'GET',
+		url: rootURL + '/job/allJobs/' + id,
+		dataType: "json",
+		async: false,
+		success: function (data) {
+			jobData = data
+		}
+	});
+	return jobData;
+};
+
 function getJobBySearchKey(searchKey) {
 	var allJobs;
 	if(!searchKey){

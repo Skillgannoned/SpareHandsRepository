@@ -45,6 +45,14 @@ public class JobWS {
 		}
 	    
 	    @GET
+		@Path("/allJobs/owner/{id}")
+		@Produces({ MediaType.APPLICATION_JSON })
+		public Response findJobsByOwnerId(@PathParam("id") int id) {
+			final List<Job> job = jobDao.getJobsByOwnerId(id);
+			return Response.status(200).entity(job).build();
+		}
+	    
+	    @GET
 		@Path("/jobsByKey/{searchKey}")
 		@Produces({ MediaType.APPLICATION_JSON })
 		public Response findJobBySearchKey(@PathParam("searchKey") String searchKey) {
@@ -63,7 +71,6 @@ public class JobWS {
 	    @DELETE
 	    @Path("/deleteJob/{id}")
 	    public Response deleteJob(@PathParam("id") int id){
-	    	System.out.println("job " + id + " deleted");
 	    	jobDao.delete(id);
 	    	return Response.status(204).build();
 	    }  

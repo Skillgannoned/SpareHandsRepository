@@ -56,5 +56,18 @@ public class JobDAO {
 		}
 		return jobs;
 	}
+
+	public List<Job> getJobsByOwnerId(Integer id) {
+		List<Job> jobs = null;
+		final Query query=entityManager.createQuery("SELECT j FROM Job j"
+				+ " WHERE j.owner.id = :id ");
+		query.setParameter("id", id);
+		try {
+			jobs =  query.getResultList();
+		} catch (EntityNotFoundException | NonUniqueResultException e) {
+			e.printStackTrace();
+		}
+		return jobs;
+	}
 	
 }

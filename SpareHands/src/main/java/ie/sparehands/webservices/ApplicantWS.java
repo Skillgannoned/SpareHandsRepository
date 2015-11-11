@@ -18,6 +18,7 @@ import javax.ws.rs.core.Response;
 
 import ie.sparehands.daos.ApplicantDAO;
 import ie.sparehands.entities.Applicant;
+import ie.sparehands.entities.Job;
 
 @Path("/applicant")
 @Stateless
@@ -42,6 +43,21 @@ public class ApplicantWS {
 	public Response findApplicantById(@PathParam("id") int id) {
 		final Applicant applicant = applicantDao.getApplicant(id);
 		return Response.status(200).entity(applicant).build();
+	}
+	@GET
+	@Path("/allApplications/applicant/{id}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response findApplicationsByApplicantId(@PathParam("id") int id) {
+		final List<Applicant> applicants = applicantDao.getApplicationsByApplicantId(id);
+		return Response.status(200).entity(applicants).build();
+	}
+	
+	@GET
+	@Path("/allApplications/owner/{id}")
+	@Produces({ MediaType.APPLICATION_JSON })
+	public Response findApplicationsByOwnerId(@PathParam("id") int id) {
+		final List<Applicant> applicants = applicantDao.findApplicationsByOwnerId(id);
+		return Response.status(200).entity(applicants).build();
 	}
 	
 	@POST

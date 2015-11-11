@@ -26,7 +26,7 @@ $(document).ready(function() {
 		$('#myjobs-section').show();
 		$('#applications-section').hide();
 		$('#profile-section').hide();
-		generateMyJobs();
+//		generateMyJobs();
 		closeNavBar();
 		});
 	$("#applicationsNav").click(function(event) {
@@ -133,6 +133,3 @@ function showJobDetails(id){
 	$('#jobModalReward span').text(jobData.reward);
 }
 
-function generateMyJobs(){
-	
-}
