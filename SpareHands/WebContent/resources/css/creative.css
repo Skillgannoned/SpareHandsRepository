@@ -173,6 +173,17 @@ body {
     outline: none;
     display: block;
 }
-
-
-
+#myjobs-section .container, #myapplications-section .container{
+	background-color: white;
+	padding:1.6%;
+	margin-top:5%;
+	border-radius:20px;
+	width:95%;
+}
+#myjobs-section .td,#myapplications-section .td{
+	overflow: scroll;
+}
+.paginate_button{
+	margin-right:2px;
+	cursor:pointer;
+}

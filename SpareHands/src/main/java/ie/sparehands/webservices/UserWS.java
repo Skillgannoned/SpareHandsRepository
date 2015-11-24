@@ -63,7 +63,8 @@ public class UserWS {
 	        return Response.status(201).entity(user).build();
 	    }
 	    
-	    @PUT @Path("/editUser/{id}")
+	    @PUT 
+	    @Path("/editUser/{id}")
 		@Consumes({ MediaType.APPLICATION_JSON })
 		public Response updateUser(User user) {
 	    	userDao.update(user);

@@ -34,7 +34,7 @@ public class ApplicantTest {
 	
 	@Test
 	public void testSetStatus(){
-		applicant.setStatus(true);
-		assertEquals(true,applicant.getStatus());
+		applicant.setStatus("confirmed");
+		assertEquals("confirmed",applicant.getStatus());
 	}
 }

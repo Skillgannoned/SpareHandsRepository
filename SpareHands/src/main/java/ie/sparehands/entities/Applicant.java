@@ -29,7 +29,7 @@ public class Applicant implements Serializable {
 	@JoinColumn(name = "job_id")
 	private Job job;	
 	@Column(name="status")
-	private boolean status;
+	private String status;
 	
 	public Applicant() {
 		super();
@@ -42,11 +42,11 @@ public class Applicant implements Serializable {
 		this.job = job;
 	}
 
-	public boolean getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(boolean status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

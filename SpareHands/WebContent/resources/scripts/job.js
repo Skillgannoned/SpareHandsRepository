@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	
-	
 	$('#createJobModalButton').click(function(event){
 		var title = $('#createJobTitle').val();
 		var description = $('#createJobDescription').val();

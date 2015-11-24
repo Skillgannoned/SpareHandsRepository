@@ -66,5 +66,18 @@ public class ApplicantDAO {
 		}
 		return applications;
 	}
+
+	public List<Applicant> findApplicationsByJobId(int id) {
+		List<Applicant> applications = null;
+		final Query query=entityManager.createQuery("SELECT a FROM Applicant a"
+				+ " WHERE a.job.id = :id ");
+		query.setParameter("id", id);
+		try {
+			applications =  query.getResultList();
+		} catch (EntityNotFoundException | NonUniqueResultException e) {
+			e.printStackTrace();
+		}
+		return applications;
+	}
 	
 }

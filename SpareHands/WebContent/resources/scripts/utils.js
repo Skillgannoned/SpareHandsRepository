@@ -1,3 +1,5 @@
+var rootURL = "http://localhost:8080/SpareHands/rest";
+
 function findUserById(id) {
 	var userData;
 	$.ajax({
@@ -51,6 +53,7 @@ function setCookie(id){
 	var a = new Date();
 	a = new Date(a.getTime() +1000*60*60*24*365);
 	document.cookie="UserLoggedIn="+id+";expires="+a.toGMTString()+';';
+	window.location.reload();
 }
 
 function getCookie(cookieName) {
@@ -209,7 +212,6 @@ function createJob(userId, title, description, date, location, reward){
 	});
 }
 
-
 function getAllJobs() {
 	var allJobs;
 	$.ajax({
@@ -269,6 +271,46 @@ function getJobBySearchKey(searchKey) {
 	return allJobs;
 };
 
+function getJobByOwnerId(ownerId) {
+	var allJobs;
+	$.ajax({
+		type: 'GET',
+		url: rootURL + '/job/allJobs/owner/'+ownerId,
+		dataType: "json",
+		async: false,
+		success: function (data) {
+			allJobs = data
+		}
+	});
+	return allJobs;
+};
 
+function getApplicationByApplicantID(applicantId ) {
+	var applications;
+	$.ajax({
+		type: 'GET',
+		url: rootURL + '/applicant/allApplications/applicant/'+applicantId,
+		dataType: "json",
+		async: false,
+		success: function (data) {
+			applications = data
+		}
+	});
+	return applications;
+};
+
+function getApplicationByOwnerID(ownerId) {
+	var applications;
+	$.ajax({
+		type: 'GET',
+		url: rootURL + 'applicant/allApplications/owner/'+ownerId,
+		dataType: "json",
+		async: false,
+		success: function (data) {
+			applications = data
+		}
+	});
+	return applications;
+};
 
 

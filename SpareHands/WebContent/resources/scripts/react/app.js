@@ -9,13 +9,11 @@ var SearchBar = React.createClass({
 	},
 	render: function () {	
 		return (
-
-					<div className="input-group">
-						<input type="search" value={this.state.symbol} onChange={this.searchHandler} className="form-control" placeholder="Enter any search parameter..."/> 
-						<span className="input-group-btn">
-						</span>
-					</div>
-		
+			<div className="input-group">
+				<input type="search" value={this.state.symbol} onChange={this.searchHandler} className="form-control" placeholder="Enter any search parameter..."/> 
+				<span className="input-group-btn">
+				</span>
+			</div>
 	    );
 	}
 });
@@ -23,14 +21,14 @@ var SearchBar = React.createClass({
 var JobListItem = React.createClass({
     render: function () {
         return (
-        		<a href="#" id="jobPanelClickable" data-toggle="modal" data-target="#jobDetailsModal" data-identity={this.props.job.id}> 
-		        	<div className="panel panel-primary">
-						<div className="panel-heading">{this.props.job.title}</div>
-						<div className="panel-body">{this.props.job.description}</div>
-						<div className="panel-footer">{this.props.job.location} • {this.props.job.date}</div>
-					</div>
-				</a>
-        );
+    		<a href="#" id="jobPanelClickable" data-toggle="modal" data-target="#jobDetailsModal" data-identity={this.props.job.id}> 
+	        	<div className="panel panel-primary">
+					<div className="panel-heading">{this.props.job.title}</div>
+					<div className="panel-body">{this.props.job.description}</div>
+					<div className="panel-footer">{this.props.job.location} • {this.props.job.date}</div>
+				</div>
+			</a>
+	    );
     }
 });
 

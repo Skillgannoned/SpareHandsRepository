@@ -6,10 +6,10 @@
 #jobs-section .searchBar .input-group {
 	width: 100%;
 }
-#jobs-section .container {
+.container {
 	width:100%;
 }
-#jobs-section .container .row {
+.container .row {
 	text-align: center;
 	margin-right:5%;
 	margin-left:5%;
@@ -29,22 +29,25 @@
 	-ms-transition: .7s ease-in-out;
 	-o-transition: .7s ease-in-out;
 }
-#jobs-section .container .panel {
+.container .panel {
 	width: 250px;
 	margin:1%;
 	height:250px;
 	display: inline-block;
 }
-#jobs-section .container .panel .panel-heading{
+.container .panel .panel-heading{
 	height:15%;
 	overflow:scroll;
 }
-#jobs-section .container .panel .panel-body{
+.container .panel .panel-body{
 	height:70%;
 	overflow:scroll;
 }
-#jobs-section .container .panel .panel-footer{
+.container .panel .panel-footer{
 	height:15%;
 	bottom:0;
 	overflow:scroll;
+}
+.deleteJobDiv{
+	background-color: #EFEFEF;
 }
