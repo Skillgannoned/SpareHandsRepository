@@ -181,7 +181,7 @@ function deleteJob(jobId){
 		$.ajax({
 			type: 'DELETE',
 			contentType: 'application/json',
-			url: rootURL + '/job/deleteJob/'+jobId,
+			url: rootURL + '/job/allJobs/delete/'+jobId,
 			dataType: "json",
 			success:function(){
 				renderMyJobs();}
@@ -213,7 +213,7 @@ function getApplicationByJobID(jobId ) {
 	var applications;
 	$.ajax({
 		type: 'GET',
-		url: rootURL + '/applicant/allApplications/job/'+jobId,
+		url: rootURL + '/applications/allApplications/job/'+jobId,
 		dataType: "json",
 		async: false,
 		success: function (data) {
@@ -227,14 +227,13 @@ function editApplicantStatus(applicationId, status){
 	var application;
 	$.ajax({
 		type: 'GET',
-		url: rootURL + '/applicant/allApplicants/'+applicationId,
+		url: rootURL + '/applications/allApplications/'+applicationId,
 		dataType: "json",
 		async: false,
 		success: function (data) {
 			application = data
 		}
 	});
-	application.status=status;
 	var dateParts = application.job.date.split(/(\d{1,2})-(\d{1,2})-(\d{4})/);
 	application.job.date= dateParts[3] + "-" + dateParts[1] + "-" + dateParts[2];
 	var jsonString = JSON.stringify({ 
@@ -242,12 +241,12 @@ function editApplicantStatus(applicationId, status){
 		"owner": application.owner, 
 		"applicant": application.applicant,
 		"job": application.job,
-		"status": application.status,
+		"status": status,
 	});
 	$.ajax({
 		type: 'PUT',
 		contentType: 'application/json',
-		url: rootURL + '/applicant/editApplication/'+application.id,
+		url: rootURL + '/applications/allApplications/edit/'+application.id,
 		dataType: "json",
 		data: jsonString,
 		success:function(){renderManageJobApplicants(application.job.id);}
@@ -289,7 +288,7 @@ function deleteApplication(applicationId){
 		$.ajax({
 			type: 'DELETE',
 			contentType: 'application/json',
-			url: rootURL + '/applicant/deleteApplicant/'+applicationId,
+			url: rootURL + '/applications/allApplications/delete/'+applicationId,
 			dataType: "json",
 			success:function(){
 				renderMyApplications();}
@@ -308,10 +307,11 @@ function createApplication(jobId){
 		"job": job,
 		"status": "Pending",
 	});	
+	console.log(jsonString);
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',
-		url: rootURL + '/applicant/addApplicant',
+		url: rootURL + '/applications/allApplications/add',
 		dataType: "json",
 		data: jsonString,
 		success:function(){

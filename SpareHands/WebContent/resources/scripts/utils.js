@@ -19,7 +19,7 @@ function findUserByEmail(email) {
 	var userData;
 	$.ajax({
 		type: 'GET',
-		url: rootURL + '/user/email/' + email,
+		url: rootURL + '/user/allUsers/email/' + email,
 		dataType: "json",
 		async: false,
 		success: function (data) {
@@ -33,7 +33,7 @@ function addUserToDB(formData){
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',
-		url: rootURL + '/user/addUser',
+		url: rootURL + '/user/allUsers/add/',
 		dataType: "json",
 		data: formData,
 		success:function(){
@@ -103,7 +103,7 @@ function updatePassword(password){
 	$.ajax({
 		type: 'PUT',
 		contentType: 'application/json',
-		url: rootURL + '/user/editUser/'+user.id,
+		url: rootURL + '/user/allUsers/edit/'+user.id,
 		dataType: "json",
 		data: jsonString,
 		success:function(){
@@ -131,7 +131,7 @@ function updateUserDetails(forename, surname, email, dob){
 	$.ajax({
 		type: 'PUT',
 		contentType: 'application/json',
-		url: rootURL + '/user/editUser/'+user.id,
+		url: rootURL + '/user/allUsers/edit/'+user.id,
 		dataType: "json",
 		data: jsonString,
 		success:function(){
@@ -158,7 +158,7 @@ function updateUserPicture(pictureURL){
 	$.ajax({
 		type: 'PUT',
 		contentType: 'application/json',
-		url: rootURL + '/user/editUser/'+user.id,
+		url: rootURL + '/user/allUsers/edit/'+user.id,
 		dataType: "json",
 		data: jsonString,
 		success:function(){}
@@ -183,7 +183,7 @@ function deleteAccount(user){
 		$.ajax({
 			type: 'DELETE',
 			contentType: 'application/json',
-			url: rootURL + '/user/deleteUser/'+user.id,
+			url: rootURL + '/user/allUsers/delete/'+user.id,
 			dataType: "json",
 			success:function(){
 				alert("Account Deleted");}
@@ -204,7 +204,7 @@ function createJob(userId, title, description, date, location, reward){
 	$.ajax({
 		type: 'POST',
 		contentType: 'application/json',
-		url: rootURL + '/job/addJob',
+		url: rootURL + '/job/allJobs/add',
 		dataType: "json",
 		data: jsonString,
 		success:function(){
@@ -261,7 +261,7 @@ function getJobBySearchKey(searchKey) {
 	}
 	$.ajax({
 		type: 'GET',
-		url: rootURL + '/job/jobsByKey/'+searchKey,
+		url: rootURL + '/job/allJobs/search/'+searchKey,
 		dataType: "json",
 		async: false,
 		success: function (data) {
@@ -289,7 +289,7 @@ function getApplicationByApplicantID(applicantId ) {
 	var applications;
 	$.ajax({
 		type: 'GET',
-		url: rootURL + '/applicant/allApplications/applicant/'+applicantId,
+		url: rootURL + '/applications/allApplications/'+applicantId,
 		dataType: "json",
 		async: false,
 		success: function (data) {

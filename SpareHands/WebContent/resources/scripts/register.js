@@ -43,6 +43,7 @@ function verifyRegisterDetails(forename, surname, dob, email, password1, passwor
 				    			document.getElementById('registerModalError'));
 		    		}
 		    		else{
+		    			console.log(registerFormToJson());
 		    			addUserToDB(registerFormToJson());
 		    			$('#registerModal').modal('hide');
 		    			$('#registerForeName').val("");

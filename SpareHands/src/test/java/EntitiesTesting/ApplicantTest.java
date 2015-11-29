@@ -14,7 +14,7 @@ public class ApplicantTest {
 	private final User OWNER = new User();
 	private final User APPLICANT = new User();
 	private final Job JOB = new Job();
-	private final boolean STATUS = false;
+	private final String STATUS = null;
 	private Applicant applicant;
 
 	@Before

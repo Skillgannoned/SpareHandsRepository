@@ -21,7 +21,7 @@ import ie.sparehands.entities.Applicant;
 import ie.sparehands.entities.Job;
 import ie.sparehands.entities.User;
 
-@Path("/applicant")
+@Path("/applications")
 @Stateless
 @LocalBean
 public class ApplicantWS {
@@ -30,7 +30,7 @@ public class ApplicantWS {
 	private ApplicantDAO applicantDao;
 
 	@GET
-	@Path("/allApplicants")
+	@Path("/allApplications")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findAll() {
 		System.out.println("Get all applicants");
@@ -39,21 +39,15 @@ public class ApplicantWS {
 	}
 
 	@GET
-	@Path("/allApplicants/{id}")
+	@Path("/allApplications/{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findApplicantById(@PathParam("id") int id) {
 		final Applicant applicant = applicantDao.getApplicant(id);
 		return Response.status(200).entity(applicant).build();
 	}
-	@PUT 
-	@Path("/editApplication/{id}")
-	@Consumes({ MediaType.APPLICATION_JSON })
-	public Response updateApplicant(Applicant applicant) {
-		applicantDao.update(applicant);
-		return Response.status(200).entity(applicant).build();
-	}
+	
 	@GET
-	@Path("/allApplications/applicant/{id}")
+	@Path("/allApplications/{id}")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response findApplicationsByApplicantId(@PathParam("id") int id) {
 		final List<Applicant> applicants = applicantDao.getApplicationsByApplicantId(id);
@@ -77,15 +71,23 @@ public class ApplicantWS {
 	}
 	
 	@POST
-	@Path("/addApplicant")
+	@Path("/allApplications/add")
 	@Produces({ MediaType.APPLICATION_JSON })
 	public Response saveApplicant(final Applicant applicant) {
 		applicantDao.save(applicant);
 		return Response.status(201).entity(applicant).build();
 	}
 
+	@PUT 
+	@Path("/allApplications/edit/{id}")
+	@Consumes({ MediaType.APPLICATION_JSON })
+	public Response updateApplicant(Applicant applicant) {
+		applicantDao.update(applicant);
+		return Response.status(200).entity(applicant).build();
+	}
+
 	@DELETE
-	@Path("/deleteApplicant/{id}")
+	@Path("/allApplications/delete/{id}")
 	public Response deleteApplicant(@PathParam("id") int id) {
 		System.out.println("applicant " + id + " deleted");
 		applicantDao.delete(id);

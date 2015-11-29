@@ -36,15 +36,6 @@ public class UserWS {
 	    	final List<User> users = userDao.getAllUsers();
 	        return Response.status(200).entity(users).build();
 	    }	   
-	    
-	    @GET
-	    @Produces({ MediaType.APPLICATION_JSON })
-	    @Path("/email/{email}")
-	    public Response findUserByEmail(@PathParam("email") String email) {
-	    	System.out.println("email "+email);
-	    	User user = userDao.getUserByEmail(email);
-	        return Response.status(200).entity(user).build();
-	    }
 	   
 		@GET
 		@Path("/allUsers/{id}")
@@ -54,8 +45,17 @@ public class UserWS {
 			return Response.status(200).entity(user).build();
 		}
 		
+	   @GET
+	    @Produces({ MediaType.APPLICATION_JSON })
+	    @Path("/allUsers/email/{email}")
+	    public Response findUserByEmail(@PathParam("email") String email) {
+	    	System.out.println("email "+email);
+	    	User user = userDao.getUserByEmail(email);
+	        return Response.status(200).entity(user).build();
+	    }
+	   
 	    @POST
-	    @Path("/addUser")
+	    @Path("/allUsers/add/")
 	    @Produces({ MediaType.APPLICATION_JSON })
 	    public Response saveUser(final User user) {
 	    	System.out.println("USER\n\n"+user.toString()+"\n\n");
@@ -64,15 +64,15 @@ public class UserWS {
 	    }
 	    
 	    @PUT 
-	    @Path("/editUser/{id}")
+	    @Path("/allUsers/edit/{id}")
 		@Consumes({ MediaType.APPLICATION_JSON })
-		public Response updateUser(User user) {
+		public Response updateUser(final User user) {
 	    	userDao.update(user);
 			return Response.status(200).entity(user).build();
 		}
 	    
 	    @DELETE
-	    @Path("/deleteUser/{id}")
+	    @Path("/allUsers/delete/{id}")
 	    public Response deleteUser(@PathParam("id") int id){
 	    	userDao.delete(id);
 	    	return Response.status(204).build();

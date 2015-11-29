@@ -53,7 +53,7 @@ public class JobWS {
 		}
 	    
 	    @GET
-		@Path("/jobsByKey/{searchKey}")
+		@Path("/allJobs/search/{searchKey}")
 		@Produces({ MediaType.APPLICATION_JSON })
 		public Response findJobBySearchKey(@PathParam("searchKey") String searchKey) {
 	    	final List<Job> jobs = jobDao.getJobBySearchKey(searchKey);
@@ -61,7 +61,7 @@ public class JobWS {
 		}
 	    
 	    @POST
-	    @Path("/addJob")
+	    @Path("/allJobs/add")
 	    @Produces({ MediaType.APPLICATION_JSON })
 	    public Response saveJob(final Job job) {
 	    	jobDao.save(job);
@@ -69,7 +69,7 @@ public class JobWS {
 	    }
 	    
 	    @DELETE
-	    @Path("/deleteJob/{id}")
+	    @Path("/allJobs/delete/{id}")
 	    public Response deleteJob(@PathParam("id") int id){
 	    	jobDao.delete(id);
 	    	return Response.status(204).build();
